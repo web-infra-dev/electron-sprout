@@ -1,0 +1,10 @@
+{
+  "extends": ["@modern-js-app"],
+  "ignorePatterns": ["node_modules/", "dist/", "lib/", ".rpt2_cache/"],
+  "rules": {
+    "prefer-destructuring": "off",
+    "no-template-curly-in-string": "off",
+    "import/no-commonjs": "off",
+    "import/no-dynamic-require": "off"
+  }
+}

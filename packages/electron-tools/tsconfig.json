@@ -1,0 +1,16 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "typeRoots": ["./typings"],
+    "types": ["node"]
+  },
+  "include": ["src", "typings"]
+}

@@ -1,0 +1,14 @@
+{
+  "extends": ["@modern-js-app"],
+  "rules": {
+    "promise/prefer-await-to-then": "off",
+    "promise/no-nesting": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/prefer-optional-chain": "off",
+    "no-proto": "off",
+    "no-new": "off",
+    "no-console": "off",
+    "filenames/match-exported": "off"
+  }
+}

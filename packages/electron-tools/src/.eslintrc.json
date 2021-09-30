@@ -1,0 +1,28 @@
+{
+  "extends": ["@modern-js-app"],
+  // eslint-plugin-import 的规则现在有 bug，可以临时加上：
+  "rules": {
+    "import/extensions": ["off"],
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-commonjs": "off",
+    "import/named": "off",
+    "jsdoc/require-description": "off",
+    "@typescript-eslint/typedef": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "no-new": "off",
+    "no-process-exit": "off",
+    "promise/prefer-await-to-then": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "no-console": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/prefer-ts-expect-error": "off",
+    "@typescript-eslint/prefer-optional-chain": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "consistent-return": "off",
+    "radix": "off",
+    "import/no-dynamic-require": "off",
+    "no-template-curly-in-string": "off",
+    "filenames/match-exported": "off",
+    "@typescript-eslint/no-require-imports": "off"
+  }
+}

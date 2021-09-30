@@ -1,0 +1,1 @@
+export { handleWindowConfig } from './handleWindowConfig';

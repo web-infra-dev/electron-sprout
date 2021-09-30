@@ -1,0 +1,75 @@
+{
+  "private": true,
+  "name": "electron-sprout",
+  "description": "Electron Sprout is a Modern Framework base on Electron",
+  "scripts": {
+    "new": "modern new",
+    "setup": "pnpm install",
+    "reset": "lerna clean --yes && rm -rf node_modules",
+    "lint": "modern lint",
+    "lint:error": "modern lint --quiet",
+    "bump": "modern deploy bump",
+    "tags": "modern deploy tag",
+    "publish-alpha": "ACTION='publish' node ./scripts/publish-dev.js && yarn recover-version",
+    "recover-version": "node ./scripts/publish-dev.js"
+  },
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ],
+    "*.{js,jsx,mjs,mjsx,cjs,cjsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@modern-js"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/",
+    "lib/",
+    ".rpt2_cache/"
+  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "examples/*",
+      "services/*",
+      "features/*",
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@modern-js/module-tools": "^1.0.0-rc.0",
+    "@modern-js/plugin-jarvis": "^1.0.0-rc.4",
+    "@modern-js/tsconfig": "^1.0.0-rc.0",
+    "fs-extra": "^10.0.0",
+    "json5": "^2.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "webpack": "^5"
+    }
+  },
+  "dependencies": {
+    "electron": "13.1.9"
+  }
+}

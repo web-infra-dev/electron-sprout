@@ -1,0 +1,76 @@
+{
+  "private": true,
+  "name": "test-modern-electron",
+  "version": "1.0.0-rc.1",
+  "main": "./electron/main.js",
+  "scripts": {
+    "new": "modern new",
+    "setup": "npm run reset && pnpm install --ignore-scripts",
+    "reset": "rm -rf node_modules",
+    "lint": "modern lint",
+    "lint:error": "modern lint --quiet",
+    "test": "modern test",
+    "dev": "modern dev",
+    "dev:render": "modern dev electron-web",
+    "build": "modern build",
+    "dev:main": "modern dev electron-main",
+    "build:main": "modern build electron-main",
+    "build:app": "PLATFORM=mac modern build electron-app",
+    "build:electron:mac": "PLATFORM=mac modern build electron",
+    "start": "modern start",
+    "preview": "modern deploy --mode preview",
+    "deploy": "modern deploy"
+  },
+  "engines": {
+    "node": ">=12.17.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ],
+    "*.{js,jsx,mjs,mjsx,cjs,cjsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@modern-js"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/",
+    "lib/",
+    ".rpt2_cache/"
+  ],
+  "dependencies": {
+    "@electron/remote": "^1.2.1",
+    "@modern-js/runtime": "^1.0.0-rc.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.15.3",
+    "@modern-js/app-tools": "^1.0.0-rc.0",
+    "@modern-js/electron-test": "^1.0.0-rc.0",
+    "@modern-js/plugin-electron": "^1.0.0-rc.0",
+    "@modern-js/plugin-testing": "^1.0.0-rc.0",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
+    "electron": "^13",
+    "electron-builder": "^22.11.7",
+    "react-router-dom": "^5.3.0",
+    "tslib": "^2.3.0",
+    "typescript": "~4.3.5"
+  }
+}
