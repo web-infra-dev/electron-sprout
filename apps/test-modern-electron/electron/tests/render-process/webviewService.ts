@@ -63,7 +63,7 @@ describe('test webviewService', () => {
     const msg = 'this is msg from window';
     const result = await new Promise(resolve => {
       const results: string[] = [];
-      const handler = (res: any) => {
+      const handler = (res:) => {
         results.push(res);
         if (results.length === 2) {
           resolve(results);

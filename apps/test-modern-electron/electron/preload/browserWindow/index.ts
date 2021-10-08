@@ -11,52 +11,34 @@ const { callMain, ...rest } = browserWindowPreloadApis;
 export const apis = testServices({
   ...rest,
   callMain,
-
-  startToUpdate: (url: string) => {
-    return callMain('startToUpdate', url);
-  },
-
-  openWindow: (winName: string) => {
-    return callMain('openWindow', winName);
-  },
+  startToUpdate: (url: string) => callMain('startToUpdate', url),
+  openWindow: (winName: string) => callMain('openWindow', winName),
   openDevTools: (webviewId: string) => {
     const webview = rest.webviewService.getWebviewById(webviewId);
     webview?.openDevTools();
   },
-  registWebviewServices: (msg: string) => {
-    return rest.webviewService.registerServices({
-      func1: () => {
-        return msg;
-      },
-    });
-  },
-  getAppVersion: () => {
-    return app.getVersion();
-  },
+  registWebviewServices: (msg: string) =>
+    rest.webviewService.registerServices({
+      func1: () => msg,
+    }),
+  getAppVersion: () => '13.1.9',
   getPageLocation: () => {
     console.log('getPageLocation');
     return window.location.href;
   },
-  openInBrowser: (url: string) => {
-    return callMain('openInBrowser', url);
-  },
-  getWindowCount: () => {
-    return callMain('getWindowCount');
-  },
-  getWebviewPreloadJs: () => {
-    return join(
+  openInBrowser: (url: string) => callMain('openInBrowser', url),
+  getWindowCount: () => callMain('getWindowCount'),
+  getWebviewPreloadJs: () =>
+    join(
       'file://',
       __dirname,
       '..',
       'webview',
       IS_DEV ? 'index.dev.js' : 'index.js',
-    );
-  },
-  getCurrentWindowId: () => {
-    return getCurrentWindow().id;
-  },
-  listenWillClose: (data: string) => {
-    return new Promise((resolve, reject) => {
+    ),
+  getCurrentWindowId: () => getCurrentWindow().id,
+  listenWillClose: (data: string) =>
+    new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(new Error('listen onClose timeout'));
       }, 5000);
@@ -66,10 +48,9 @@ export const apis = testServices({
         resolve(data);
         listener.dispose();
       });
-    });
-  },
-  listenBeforeClose: (state = false) => {
-    return new Promise((resolve, reject) => {
+    }),
+  listenBeforeClose: (state = false) =>
+    new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(new Error('listen onClose timeout'));
       }, 5000);
@@ -78,10 +59,9 @@ export const apis = testServices({
         resolve(true);
         return state;
       });
-    });
-  },
-  listenWebviewMsg: (webviewId: string, channel: string) => {
-    return new Promise((resolve, reject) => {
+    }),
+  listenWebviewMsg: (webviewId: string, channel: string) =>
+    new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(new Error('listen message timeout'));
       }, 5000);
@@ -91,10 +71,9 @@ export const apis = testServices({
         clearTimeout(timeout);
         resolve(data);
       });
-    });
-  },
-  listenMessage: (channel: string) => {
-    return new Promise((resolve, reject) => {
+    }),
+  listenMessage: (channel: string) =>
+    new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(new Error('listen message timeout'));
       }, 5000);
@@ -104,8 +83,7 @@ export const apis = testServices({
         clearTimeout(timeout);
         resolve(data);
       });
-    });
-  },
+    }),
 });
 
 exposeInMainWorld(apis);

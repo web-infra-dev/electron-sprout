@@ -1,5 +1,5 @@
 /**
- * @jest-environment @modern-js/plugin-electron/node_modules/@modern-js/electron-test/dist/js/node/testEnvironment.js
+ * @jest-environment @modern-js/electron-test/dist/js/node/testEnvironment.js
  */
 
 import './render-process/call';

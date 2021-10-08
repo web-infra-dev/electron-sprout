@@ -1,5 +1,3 @@
-const { dirname } = require('path');
-const { installDep, compileDep } = require('@modern-js/plugin-electron/tools');
 /** @type {import('@modern-js/app-tools').UserConfig} */
 module.exports = {
   plugins: [
@@ -9,7 +7,10 @@ module.exports = {
   ],
   testing: {
     jest: {
-      testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      testMatch: [
+        '**/tests/**/*.test.[jt]s?(x)',
+        '**/?(*.)+(spec|test).[jt]s?(x)',
+      ],
     },
   },
   output: {
