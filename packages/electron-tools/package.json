@@ -71,7 +71,7 @@
     "@types/uglify-js": "^3.13.1",
     "electron-builder": "22.7.0",
     "typescript": "~4.3.5",
-    "webpack": "^5.50.0"
+    "webpack": "^5"
   },
   "jupiterSettings": {
     "output": {

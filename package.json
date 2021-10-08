@@ -64,11 +64,7 @@
     "fs-extra": "^10.0.0",
     "json5": "^2.2.0"
   },
-  "pnpm": {
-    "overrides": {
-      "webpack": "^5"
-    }
-  },
+
   "dependencies": {
     "electron": "13.1.9"
   }
