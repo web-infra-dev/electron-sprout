@@ -21,8 +21,8 @@ export * from './services/windows/common/windows';
 export interface BrowserWindowApis {
   callMain: (funcName: string, ...args: any[]) => Promise<any>;
   winService: WinService;
-  updateService: LifecycleService;
-  lifecycleService: UpdateService;
+  updateService: UpdateService;
+  lifecycleService: LifecycleService;
   webviewService: WebviewService;
   isElectron: boolean;
   APP_ROOT: string;

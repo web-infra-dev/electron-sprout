@@ -7,23 +7,17 @@ import {
 // import { updateService } from '@modern-js/runtime/electron-render';
 import { shell } from 'electron';
 
-export const openInBrowser = (url: string) => {
-  return shell.openExternal(url);
-};
+export const openInBrowser = (url: string) => shell.openExternal(url);
 
-export const openWindow = (winName: string) => {
-  return winService.createWindow({
+export const openWindow = (winName: string) =>
+  winService.createWindow({
     name: winName,
   });
-};
 
-export const getWindowCount = () => {
-  return winService.getWindows().length;
-};
+export const getWindowCount = () => winService.getWindows().length;
 
-export const broadCastMsg = (channel: string, data: any) => {
-  return winService.broadCast(channel, data);
-};
+export const broadCastMsg = (channel: string, data: any) =>
+  winService.broadCast(channel, data);
 
 export const setLifecyclePhase = (phase: LifecycleMainPhase) => {
   try {
@@ -34,13 +28,11 @@ export const setLifecyclePhase = (phase: LifecycleMainPhase) => {
   }
 };
 
-export const lifecycleWhenReady = (msg: string) => {
-  return lifecycleService.when(2).then(() => msg);
-};
+export const lifecycleWhenReady = (msg: string) =>
+  lifecycleService.when(2).then(() => msg);
 
-export const startToUpdate = (url: string) => {
-  return updateService.checkForUpdates({
+export const startToUpdate = (url: string) =>
+  updateService.checkForUpdates({
     url,
     receiver: 'main',
   });
-};
