@@ -36,5 +36,4 @@ declare module '@modern-js/runtime/electron-test/main' {
 
 declare module '@modern-js/runtime/electron-test/webview' {
   export * from '@modern-js/electron-test/webview';
-  export { default } from '@modern-js/electron-test/webview';
 }
