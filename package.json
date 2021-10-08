@@ -40,6 +40,7 @@
     ]
   },
   "eslintConfig": {
+    "root": true,
     "extends": [
       "@modern-js"
     ]
@@ -60,9 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@modern-js/module-tools": "^1.0.0-rc.0",
-    "@modern-js/plugin-jarvis": "^1.0.0-rc.4",
-    "@modern-js/tsconfig": "^1.0.0-rc.0",
+    "@modern-js/monorepo-tools": "^1.0.0-rc.0",
+    "@modern-js/plugin-jarvis": "^1.0.0-rc.0",
     "fs-extra": "^10.0.0",
     "json5": "^2.2.0"
   },

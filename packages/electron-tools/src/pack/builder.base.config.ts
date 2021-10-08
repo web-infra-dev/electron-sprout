@@ -21,8 +21,8 @@ const baseConfig = {
       sign: true,
     },
     mac: {
-      entitlements: 'assets/entitlements.mac.plist',
-      entitlementsInherit: 'assets/entitlements.mac.plist',
+      entitlements: `${defaultBuildResouces}/entitlements.mac.plist`,
+      entitlementsInherit: `${defaultBuildResouces}/entitlements.mac.plist`,
       hardenedRuntime: true,
       gatekeeperAssess: false,
       extendInfo: {

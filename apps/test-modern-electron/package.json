@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "test-modern-electron",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.6",
   "main": "./electron/main.js",
   "scripts": {
     "new": "modern new",
@@ -60,8 +60,8 @@
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.3",
     "@modern-js/app-tools": "^1.0.0-rc.0",
-    "@modern-js/electron-test": "^1.0.0-rc.0",
-    "@modern-js/plugin-electron": "^1.0.0-rc.0",
+    "@modern-js/electron-test": "workspace:^1.0.0-rc.6",
+    "@modern-js/plugin-electron": "workspace:^1.0.0-rc.6",
     "@modern-js/plugin-testing": "^1.0.0-rc.0",
     "@types/jest": "^26.0.9",
     "@types/node": "^14",
