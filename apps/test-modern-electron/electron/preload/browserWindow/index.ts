@@ -3,7 +3,7 @@ import {
   exposeInMainWorld,
   browserWindowPreloadApis,
 } from '@modern-js/runtime/electron-render';
-import { app, getCurrentWindow } from '@electron/remote';
+import { getCurrentWindow } from '@electron/remote';
 import { testServices } from '@modern-js/electron-test/render';
 import { IS_DEV } from '../../common/utils';
 
@@ -22,10 +22,7 @@ export const apis = testServices({
       func1: () => msg,
     }),
   getAppVersion: () => '13.1.9',
-  getPageLocation: () => {
-    console.log('getPageLocation');
-    return window.location.href;
-  },
+  getPageLocation: () => window.location.href,
   openInBrowser: (url: string) => callMain('openInBrowser', url),
   getWindowCount: () => callMain('getWindowCount'),
   getWebviewPreloadJs: () =>
@@ -44,7 +41,6 @@ export const apis = testServices({
       }, 5000);
       const listener = rest.winService.registerWillClose(() => {
         clearTimeout(timeout);
-        console.log('data:', data);
         resolve(data);
         listener.dispose();
       });
