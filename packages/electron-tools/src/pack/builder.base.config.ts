@@ -1,3 +1,9 @@
+import { isModernJsMWA } from '@/utils';
+
+const defaultBuildResouces = isModernJsMWA(process.cwd())
+  ? 'config/electron'
+  : 'assets';
+
 const baseConfig = {
   baseConfig: {
     asar: false,
@@ -6,7 +12,7 @@ const baseConfig = {
       url: '',
     },
     directories: {
-      buildResources: 'assets',
+      buildResources: defaultBuildResouces,
       output: './release',
     },
   },
