@@ -30,7 +30,7 @@
     "electron": ">=13.0.0"
   },
   "sideEffects": false,
-  "publicCnfig": {
+  "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
