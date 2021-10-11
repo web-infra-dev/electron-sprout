@@ -29,5 +29,9 @@
   "peerDependencies": {
     "electron": ">=13.0.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "publicCnfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
