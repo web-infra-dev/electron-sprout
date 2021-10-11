@@ -37,3 +37,9 @@ output_resource/
 
 scripts/tmp.json
 mono-config.json
+
+pnpm-lock.yaml
+
+**/*/tsconfig.temp.json
+
+.changeset/pre.json

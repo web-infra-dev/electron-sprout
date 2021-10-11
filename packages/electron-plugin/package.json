@@ -64,5 +64,9 @@
     "webpack": "^5",
     "webpack-chain": "^6.5.1"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "publicCnfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }

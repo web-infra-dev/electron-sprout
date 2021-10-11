@@ -4,12 +4,14 @@
   "description": "Electron Sprout is a Modern Framework base on Electron",
   "scripts": {
     "new": "modern new",
-    "setup": "pnpm install",
-    "reset": "lerna clean --yes && rm -rf node_modules",
+    "setup": "npm run reset && pnpm install --ignore-scripts",
+    "reset": "pnpm -r exec rm -rf ./node_modules",
     "lint": "modern lint",
     "lint:error": "modern lint --quiet",
-    "bump": "modern deploy bump",
-    "tags": "modern deploy tag",
+    "change": "modern change",
+    "bump": "modern bump",
+    "pre": "modern pre",
+    "release": "modern release",
     "publish-alpha": "ACTION='publish' node ./scripts/publish-dev.js && yarn recover-version",
     "recover-version": "node ./scripts/publish-dev.js"
   },
@@ -64,7 +66,6 @@
     "fs-extra": "^10.0.0",
     "json5": "^2.2.0"
   },
-
   "dependencies": {
     "electron": "13.1.9"
   }
