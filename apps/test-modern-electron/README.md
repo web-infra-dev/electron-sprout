@@ -36,7 +36,7 @@ yarn new
 其他
 
 ```
-yarn build        # 按产品环境的要求，构建项目
+pnpm build        # 按产品环境的要求，构建项目
 yarn start        # 按产品环境的要求，运行项目
 yarn test         # 运行测试用例
 yarn lint:error   # 检查和修复所有代码

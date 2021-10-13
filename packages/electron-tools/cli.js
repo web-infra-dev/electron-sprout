@@ -31,7 +31,7 @@ program
   .command('build')
   .option('-d, --development', 'build with NODE_ENV=development')
   .option(
-    '-em, --main <main>',
+    '-em, --main  <main>',
     'specify the entrance folder path of main process, such as: electron/',
   )
   .option('-i, --ignore <ignore>', 'ignore folder or file')
@@ -58,11 +58,11 @@ program
 program
   .command('pack')
   .description('pack electron app')
-  .option('-d, --development', 'build with NODE_ENV=development')
-  .action(options => {
+  // .option('-d, --development', 'build with NODE_ENV=development')
+  .action(() => {
     const userProjectPath = process.cwd();
     const processEnv = process.env;
-    processEnv.NODE_ENV = options.development ? 'development' : 'production';
+    // processEnv.NODE_ENV = options.development ? 'development' : 'production';
     // if is dev, do not use byte encr.
     const pkg = require(join(userProjectPath, 'package.json'));
 

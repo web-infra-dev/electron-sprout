@@ -5,14 +5,13 @@ import { Switch, Route } from '@modern-js/runtime/router';
 const App: React.FC = () => {
   bridge.callMain('getWindowCount').then(res => {
     console.log('res:', res);
-  })
+  });
   return (
     <Switch>
       <Route exact={true} path="/">
         <div>
           <div>Demo</div>
         </div>
-
       </Route>
       <Route path="*">
         <div>404</div>
