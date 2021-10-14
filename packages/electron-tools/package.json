@@ -1,6 +1,6 @@
 {
   "name": "@modern-js/electron-tools",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "jsnext:source": "./src/index.ts",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/js/node/index.js",
@@ -35,7 +35,7 @@
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.3",
     "@modern-js/babel-compiler": "^1.0.0-rc.0",
-    "@modern-js/electron-log": "workspace:^1.0.0-rc.10",
+    "@modern-js/electron-log": "workspace:^1.0.0-rc.11",
     "@vjpr/babel-plugin-parameter-decorator": "^1.0.15",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "colors": "^1.4.0",
