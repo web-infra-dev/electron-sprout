@@ -24,6 +24,7 @@ export const devMainProcess = (options: {
       ? dirname(entryFilePath)
       : DEFAULT_ELECTRON_MAIN_FOLDER,
     userProjectPath,
+    exitOnError: false,
   });
 
   const index = join(__dirname, 'index.dev.js');
