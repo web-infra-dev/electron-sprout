@@ -1,6 +1,9 @@
 import { StdioOptions } from 'child_process';
 import { join } from 'path';
 import spawn from 'cross-spawn';
+import { dirname } from 'upath';
+import { tscCode } from '../build';
+import { DEFAULT_ELECTRON_MAIN_FOLDER } from '@/utils/paths';
 
 // start main process
 export const devMainProcess = (options: {
@@ -9,12 +12,19 @@ export const devMainProcess = (options: {
   env: Record<string, string | undefined>;
   stdio?: StdioOptions | undefined;
 }) => {
-  const { userProjectPath, entryFilePath, env, stdio } = options;
+  const { userProjectPath, entryFilePath = '', env, stdio } = options;
   const electronBin = require('electron');
 
   if (entryFilePath) {
     process.env.MAIN_ENTRY_FILE = entryFilePath;
   }
+
+  tscCode({
+    mainProcessFolder: entryFilePath
+      ? dirname(entryFilePath)
+      : DEFAULT_ELECTRON_MAIN_FOLDER,
+    userProjectPath,
+  });
 
   const index = join(__dirname, 'index.dev.js');
 

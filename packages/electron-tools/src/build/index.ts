@@ -65,3 +65,4 @@ export const buildMainProcess = async (options: {
 };
 
 export * from './compile';
+export * from './tsc';

@@ -1,5 +1,23 @@
 # @modern-js/electron-bridge
 
+## 1.0.0-rc.9
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 6281980: improve some cli descriptions and some params defination.
+
+## 1.0.0-rc.8
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- improve some cli descriptions and some params defination.
+
 ## 1.0.0-rc.7
 
 ### Patch Changes
