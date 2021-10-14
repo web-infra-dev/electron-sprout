@@ -36,8 +36,8 @@ export const webviewService = {
   ): WebviewIpcServer | undefined {
     return service.addWebview(webviewId, withIpcServer);
   },
-  sendToWebview(webviewId: string, channelName: string, data: any) {
-    return service.sendToWebview(webviewId, channelName, data);
+  sendToWebview(webviewId: string, channel: string, data: any) {
+    return service.sendToWebview(webviewId, channel, data);
   },
   broadCast(channel: string, data: any): void {
     return service.broadCast(channel, data);
