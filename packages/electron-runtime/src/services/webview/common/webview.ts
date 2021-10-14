@@ -14,13 +14,13 @@ export interface IWebviewService {
   callWebview(
     webviewId: string,
     funcName: string,
-    ...data: any[]
+    ...args: any[]
   ): Promise<any>;
   addWebview(
     webviewId: string,
     withIpcServer?: boolean,
   ): WebviewIpcServer | undefined;
-  sendToWebview(webviewId: string, channelName: string, ...args: any): void;
+  sendToWebview(webviewId: string, channel: string, ...args: any): void;
   broadCast(channel: string, ...args: any[]): void;
   dispose(): void;
   onMessage<T>(webviewId: string, channel: string): CommonEvent<T>;

@@ -1,8 +1,8 @@
 import { BrowserWindowConstructorOptions } from 'electron';
 
 const DEFAULT_WINDOW_CONFIG: BrowserWindowConstructorOptions = {
-  width: 800,
-  height: 600,
+  width: 1024,
+  height: 800,
   show: true,
 };
 

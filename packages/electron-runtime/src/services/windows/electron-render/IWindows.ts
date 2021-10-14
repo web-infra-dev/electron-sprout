@@ -21,7 +21,7 @@ export interface IWindowsService {
     ...args: any[]
   ): Promise<any>;
   onMessage<T>(channel: string): Event<T>;
-  closeCurrentWindow(options?: { closeMode: CloseMode }): Promise<any>;
+  closeCurrentWindow(options?: { closeMode: CloseMode }): Promise<boolean>;
   closeWindowById(
     id: number,
     options?: {
@@ -34,7 +34,7 @@ export interface IWindowsService {
       closeMode: CloseMode;
     },
   ): Promise<boolean>;
-  disposeWebviewConnection(webviewIds: number[]): Promise<any>;
+  disposeWebviewConnection(webviewIds: number[]): Promise<void>;
   broadCast(channel: string, ...args: any[]): Promise<any>;
   openExplorerWindow(hide?: boolean, userId?: string): Promise<any>;
   dispose(): void;

@@ -50,10 +50,10 @@ export class WebviewService extends Disposable implements IWebviewService {
   // webview services registered map.
   // key is webview id
   // value is whether has registered services.
-  private webviewServicesRegistedInfo: Map<string, boolean> = new Map<
-    string,
-    boolean
-  >();
+  // private webviewServicesRegistedInfo: Map<string, boolean> = new Map<
+  //   string,
+  //   boolean
+  // >();
 
   private readonly _onWebviewReady = this._register(new Emitter<WebviewTag>());
 
@@ -113,13 +113,13 @@ export class WebviewService extends Disposable implements IWebviewService {
   callWebview(
     webviewId: string,
     funcName: string,
-    ...data: any[]
+    ...args: any[]
   ): Promise<any> {
     const webviewIpcServer = this.getWebviewIpcServer(webviewId);
 
     // wait for connection.
     if (!webviewIpcServer || webviewIpcServer.connections.length < 1) {
-      return this.collectPendingRequest({ webviewId, data, funcName });
+      return this.collectPendingRequest({ webviewId, data: args, funcName });
     }
     if (!webviewIpcServer) {
       renderLog.warn(
@@ -131,7 +131,7 @@ export class WebviewService extends Disposable implements IWebviewService {
     const connection = webviewIpcServer.connections[0];
     return connection.channelClient
       .getChannel(WEBVIEW_IPC_CHANNEL_NAME)
-      .call(funcName, data);
+      .call(funcName, args);
   }
 
   dispose() {

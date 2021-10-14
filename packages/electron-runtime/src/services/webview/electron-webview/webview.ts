@@ -149,7 +149,7 @@ class WebviewBridge extends Disposable {
     return this.browserwindowConnection.getChannel(channelName);
   }
 
-  send(channel: string, data: any) {
+  send(channel: string, data?: any) {
     ipcRenderer.sendToHost(channel, data);
   }
 

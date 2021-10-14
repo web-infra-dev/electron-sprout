@@ -29,6 +29,7 @@ export const registerBuildMainCmd = (program: any) => {
       )
       // .option('-ea, --electron-app', 'pack electron app')
       .option('-i, --ignore <ignore>', 'ignore folder or file')
+      .description('build electron main process')
       .action((options: BuildOptions) => {
         buildMainProcess(options);
       });
@@ -42,6 +43,7 @@ export const registerPackCmd = (program: any) => {
     cmds
       .get('build')
       .command('electron-app')
+      .description('build electron app')
       .action(() => {
         packApp();
       });
@@ -75,6 +77,7 @@ export const registerBuildRendererCmd = (program: any) => {
     cmds
       .get('build')
       .command('electron-web')
+      .description('build electron renderer with node environment')
       .action(() => {
         process.env.BUILD_MODE = BUILD_MODE.ELECTRON_WEB;
         buildRenderProcess();
@@ -95,6 +98,9 @@ export const registerBuildAppCmd = (program: any) => {
       )
       .option('-i, --ignore <ignore>', 'ignore folder or file')
       .option('-en, --enableNode', 'enable use node in electron render')
+      .description(
+        'build electron all: render process、main process and electron app',
+      )
       .action(
         async (
           options: BuildOptions & {

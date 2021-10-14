@@ -57,7 +57,7 @@ export class WindowsService extends Disposable implements IWindowsService {
     this.registerListeners();
   }
 
-  disposeWebviewConnection(webviewIds: number[]): Promise<any> {
+  disposeWebviewConnection(webviewIds: number[]): Promise<void> {
     renderLog.info('call main to dispose webview connection', webviewIds);
     return this.callWindowsManager('disposeWebviewConnection', webviewIds);
   }
@@ -215,7 +215,7 @@ export class WindowsService extends Disposable implements IWindowsService {
     });
   }
 
-  closeCurrentWindow(options?: { closeMode: CloseMode }): Promise<any> {
+  closeCurrentWindow(options?: { closeMode: CloseMode }): Promise<boolean> {
     return this.closeWindowById(this.windowId, options);
   }
 
