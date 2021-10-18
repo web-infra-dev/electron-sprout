@@ -60,9 +60,10 @@ class ElectronRuntime {
   private createIOCInstance() {
     const services = this.createServices();
     const instantiationService = new InstantiationService(services, true);
+    const { windowsConfig, windowsBaseConfig } = this.options;
     return instantiationService.createInstance(Application).init({
       ...this.options,
-      windowsConfig: handleWindowConfig(this.options.windowsConfig),
+      windowsConfig: handleWindowConfig(windowsConfig, windowsBaseConfig),
     });
   }
 
