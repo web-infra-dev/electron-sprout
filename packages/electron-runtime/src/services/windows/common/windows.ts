@@ -102,7 +102,6 @@ export interface WindowConfig {
   multiple?: boolean; // whether allow to open multiple
   options?: BrowserWindowConstructorOptions; // electron windows options
   disableAutoLoad?: boolean; // disable auto load default url
-  useFileProtocolInDev?: boolean; // whether use file protocol in dev.
   hideWhenClose?: boolean; // whether replace close with hidding window.
   addBeforeCloseListener?: boolean; // whether open onBeforeClose listener
 }

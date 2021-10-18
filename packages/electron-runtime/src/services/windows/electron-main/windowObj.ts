@@ -133,9 +133,10 @@ export class WindowObj extends Disposable implements IWindow {
 
   private getUrl(config: IWindowCreationOptions): string {
     const { windowConfig } = config;
-    const { loadUrl = '', useFileProtocolInDev } = windowConfig;
+    const { loadUrl = '' } = windowConfig;
+
     if (
-      (IS_DEV && useFileProtocolInDev) ||
+      (IS_DEV && loadUrl.startsWith('file:')) ||
       (!IS_DEV && !loadUrl.startsWith('http'))
     ) {
       /**

@@ -8,7 +8,7 @@ const getDevOptions = (isDev: boolean, port: number) => {
   const devOptions = isDev
     ? {
         dev: {
-          assetPrefix: `http://localhost:${port}/`,
+          assetPrefix: `https://localhost:${port}/`,
         },
       }
     : {};

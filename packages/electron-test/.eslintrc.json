@@ -9,6 +9,7 @@
     "no-proto": "off",
     "no-new": "off",
     "no-console": "off",
-    "filenames/match-exported": "off"
+    "filenames/match-exported": "off",
+    "no-process-exit": "off"
   }
 }

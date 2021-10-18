@@ -90,7 +90,7 @@ export const State = {
 };
 
 export interface UpdateOption {
-  receiver?: string; // receiver windowName
+  receiver: string; // receiver windowName
   url: string; // upgrade check url
 }
 
