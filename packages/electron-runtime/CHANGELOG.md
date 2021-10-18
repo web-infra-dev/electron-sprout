@@ -1,5 +1,19 @@
 # @modern-js/electron-runtime
 
+## 1.0.0-rc.13
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-log@1.0.0-rc.13
+
 ## 1.0.0-rc.12
 
 ### Patch Changes
