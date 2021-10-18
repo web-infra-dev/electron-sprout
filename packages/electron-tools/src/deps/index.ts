@@ -6,6 +6,7 @@ import { existsSync } from 'fs-extra';
 import { getArchAndPlatform } from '../utils/platform';
 import { spawnPromise } from '../utils/spawn';
 import { YARN_BIN } from '../utils/bins';
+import { ENV_NAME } from '@/utils';
 
 export const installDep = (compileFolder: string, installCmd?: string) => {
   const pkgFile = join(compileFolder, 'package.json');
@@ -17,7 +18,7 @@ export const installDep = (compileFolder: string, installCmd?: string) => {
   return spawnPromise({
     processEnv: {
       ...process.env,
-      NODE_ENV: 'production',
+      NODE_ENV: ENV_NAME.PROD,
     },
     cwd: dirname(pkgFile),
     cmd: installCmd || YARN_BIN,
@@ -34,7 +35,7 @@ export const compileDep = (compileFolder: string) => {
     cwd: compileFolder,
     processEnv: {
       ...process.env,
-      NODE_ENV: 'production',
+      NODE_ENV: ENV_NAME.PROD,
     },
     params: [
       'install-app-deps',

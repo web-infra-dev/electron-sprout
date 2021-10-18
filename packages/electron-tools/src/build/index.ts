@@ -4,6 +4,7 @@ import { createNodeModulesPkg } from './create-pkg';
 import { compileMainProcess, CompileOptions } from './compile';
 import { uglify } from './uglifyjs';
 import { tscCode } from './tsc';
+import { ENVS, ENV_NAME } from '@/utils';
 
 /**
  * 1. build main process with babel
@@ -47,7 +48,7 @@ export const buildMainProcess = async (options: {
   // use uglifyjs
   // if is Js project, srcDir is origin folder: electron
   // if is Ts project, srcDir is dist folder of babel compile: dist/electron
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env[ENVS.ELECTRON_BUILD_ENV] === ENV_NAME.PROD) {
     await uglify({
       srcDir: join(userProjectPath, outDir),
       ignore: compileOptions?.ignore || [],

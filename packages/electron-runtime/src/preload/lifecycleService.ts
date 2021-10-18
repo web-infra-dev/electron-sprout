@@ -1,9 +1,8 @@
-import { IQuitOptions } from '@/common';
 import { lifecycleService as service } from '@/services/index.render';
 
 export const lifecycleService = {
-  quit(options?: IQuitOptions): Promise<boolean> {
-    return service.quit(options);
+  quit(): Promise<boolean> {
+    return service.quit();
   },
   relaunch(options?: {
     addArgs?: string[];

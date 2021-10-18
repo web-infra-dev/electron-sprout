@@ -3,7 +3,12 @@ import { join } from 'path';
 import spawn from 'cross-spawn';
 import { dirname } from 'upath';
 import { tscCode } from '../build';
-import { DEFAULT_ELECTRON_MAIN_FOLDER } from '@/utils/paths';
+import {
+  DEFAULT_ELECTRON_MAIN_FOLDER,
+  getElectronMainEntryPath,
+  ENV_NAME,
+  isTsProject,
+} from '@/utils';
 
 // start main process
 export const devMainProcess = (options: {
@@ -27,6 +32,7 @@ export const devMainProcess = (options: {
     exitOnError: false,
   });
 
+  // js also need this to compile import grammer
   const index = join(__dirname, 'index.dev.js');
 
   const exec = spawn(electronBin, [index, ...process.argv], {
@@ -35,7 +41,7 @@ export const devMainProcess = (options: {
     env: {
       ...process.env,
       ...env,
-      NODE_ENV: 'development',
+      NODE_ENV: ENV_NAME.DEV,
     },
   });
   return exec;

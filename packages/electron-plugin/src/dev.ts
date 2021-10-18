@@ -1,7 +1,7 @@
 import { join, dirname } from 'path';
 import { spawn } from 'child_process';
 import { devMainProcess } from '@modern-js/electron-tools';
-import { BUILD_MODE, ENVS, PROCESS_TYPE } from './constant';
+import { BUILD_MODE, ENVS, ENV_NAME, PROCESS_TYPE } from './constant';
 import { processManager } from './process-manager';
 
 export const execDevMain = (entry?: string) => {
@@ -49,7 +49,7 @@ const execDev = () => {
   const exec = spawn(modernCli, ['dev'], {
     env: {
       ...process.env,
-      NODE_ENV: 'development',
+      NODE_ENV: ENV_NAME.DEV,
     },
     stdio: 'inherit',
     cwd: process.cwd(),
@@ -69,7 +69,7 @@ export const registerDevRenderCmd = (program: any) => {
       .get('dev')
       .command('electron-web')
       .action(() => {
-        process.env.BUILD_MODE = BUILD_MODE.ELECTRON_WEB;
+        process.env[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_WEB;
         return execDev();
       });
   }
@@ -116,7 +116,7 @@ export const registerDevElectronCmd = (program: any) => {
       )
       .action((options: { enableNode?: boolean; entry?: string }) => {
         if (options.enableNode) {
-          process.env.BUILD_MODE = BUILD_MODE.ELECTRON_WEB;
+          process.env[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_WEB;
         }
         process.env[ENVS.IS_ELECTRON_COMMAND] = 'true';
 

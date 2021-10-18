@@ -1,6 +1,8 @@
 // used in tests
 
 import { ChildProcess } from 'child_process';
+import { join } from 'path';
+import { existsSync } from 'fs';
 import { devMainProcess } from '@modern-js/electron-tools';
 
 export type IMessage = {
@@ -13,6 +15,11 @@ interface ITestDriverOptions {
   cwd: string;
   envs?: any;
 }
+
+export const isTsProject = (cwd: string) => {
+  const tsconfig = join(cwd, 'tsconfig.json');
+  return existsSync(tsconfig);
+};
 
 class ElectronTestDriver {
   public isReady: Record<string, boolean> = {};
@@ -29,6 +36,7 @@ class ElectronTestDriver {
   constructor(options: ITestDriverOptions) {
     const { envs, cwd } = options;
     this.rpcCalls = [];
+
     this.process = devMainProcess({
       userProjectPath: cwd,
       env: {
@@ -38,7 +46,7 @@ class ElectronTestDriver {
         NODE_ENV: 'development',
         ...envs,
       },
-      entryFilePath: './electron/main.ts',
+      entryFilePath: `./electron/main${isTsProject(cwd) ? '.ts' : '.js'}`,
       stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
     });
     this.registerMessageListener();

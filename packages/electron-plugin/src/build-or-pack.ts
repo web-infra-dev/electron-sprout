@@ -5,7 +5,7 @@ import {
   buildMainProcess as doBuildMainProcess,
   spawnPromise,
 } from '@modern-js/electron-tools';
-import { BUILD_MODE } from './constant';
+import { BUILD_MODE, ENVS, ENV_NAME } from './constant';
 
 type BuildOptions = {
   electronMain?: boolean;
@@ -62,7 +62,7 @@ export const buildRenderProcess = () => {
   return spawnPromise({
     processEnv: {
       ...process.env,
-      NODE_ENV: 'production',
+      NODE_ENV: ENV_NAME.PROD,
     },
     cwd: process.cwd(),
     cmd: modernCli,
@@ -79,7 +79,7 @@ export const registerBuildRendererCmd = (program: any) => {
       .command('electron-web')
       .description('build electron renderer with node environment')
       .action(() => {
-        process.env.BUILD_MODE = BUILD_MODE.ELECTRON_WEB;
+        process.env[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_WEB;
         buildRenderProcess();
       });
   }
@@ -108,7 +108,7 @@ export const registerBuildAppCmd = (program: any) => {
           },
         ) => {
           if (options.enableNode) {
-            process.env.BUILD_MODE = BUILD_MODE.ELECTRON_WEB;
+            process.env[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_WEB;
           }
           await buildRenderProcess();
           await buildMainProcess(options, false);
@@ -124,7 +124,12 @@ export const buildMainProcess = (
 ) => {
   const userProjectPath = process.cwd();
   const processEnv = process.env;
-  processEnv.NODE_ENV = options.development ? 'development' : 'production';
+  processEnv.NODE_ENV = ENV_NAME.PROD;
+  processEnv[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_MAIN;
+  processEnv[ENVS.ELECTRON_BUILD_ENV] = options.development
+    ? ENV_NAME.DEV
+    : ENV_NAME.PROD;
+
   const compileOptions: any = {};
 
   const pkg = fse.readJSONSync(
@@ -143,10 +148,7 @@ export const buildMainProcess = (
   return doBuildMainProcess({
     userProjectPath,
     exitWhenDone,
-    env: {
-      ...processEnv,
-      BUILD_MODE: BUILD_MODE.ELECTRON_MAIN,
-    },
+    env: processEnv,
     compileOptions,
     ignoreDependencies: ['@modern-js/runtime'],
     mainProcessFolder: options.main,

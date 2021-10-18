@@ -49,7 +49,7 @@ export default createPlugin(
       },
       config() {
         // config is running before command, so need to set BUILD_MODE here
-        process.env.BUILD_MODE = getBuildMode();
+        process.env[ENVS.BUILD_MODE] = getBuildMode();
         const appContext = useAppContext();
         const buildConfig = getConfigByBuildMode(appContext) || {};
         const aliasConfig = getImportAlias(appContext);

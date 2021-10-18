@@ -50,11 +50,19 @@ export const createNodeModulesPkg = (options: {
   // user defined dependencies
   const externalDependencies = pkg.externalDependencies || {};
 
+  // dev dependences such as typescript
+  // const developmentDependences =
+  //   process.env.NODE_ENV === 'development'
+  //     ? {
+  //         typescript: '~4.3.5',
+  //       }
+  //     : {};
   // depeences need to install and copy to electron app.
   const neededDependencies = {
     ...externalDependencies,
     ...DEFAULT_DEPENDENCES,
     ..._externalDependencies,
+    // ...developmentDependences,
   };
 
   // dev dependencies define for pack, such as electron and electron-builder

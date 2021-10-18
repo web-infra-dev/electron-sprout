@@ -6,7 +6,6 @@ import { isMacintosh, isWindows } from '../../../core/base/common/platform';
 import { Barrier } from '../../../core/base/common/async';
 import {
   ILifecycleMainService,
-  IQuitOptions,
   IRelaunchOptions,
   IWindowUnloadEvent,
   LifecycleMainPhase,
@@ -15,7 +14,6 @@ import {
 } from '../common/lifecycle';
 import { IPC_EVENTS } from '../../../common/constants/events';
 import { PROCESS_ENV } from '../../../common/constants/envs';
-import { IS_DEV } from '../../../common/constants/constants';
 import { IWindow, WindowConfig } from '../../windows/common/windows';
 import { handleVetos } from '../common/utils';
 
@@ -121,7 +119,7 @@ export class LifecycleService
       }
     }
     let quitVetoed = false;
-    app.once('quit', () => {
+    app.once('quit', (_, exitCode: number) => {
       if (!quitVetoed) {
         mainLog.info('no veto, start to relaunch');
         // Remember the reason for quit was to restart
@@ -154,6 +152,8 @@ export class LifecycleService
 
   private registerListeners(): void {
     const beforeQuitListener = () => {
+      this.setForceQuit(true);
+
       if (this._quitRequested) {
         return;
       }
@@ -447,10 +447,7 @@ export class LifecycleService
     return true; // veto
   }
 
-  quit(options?: IQuitOptions): Promise<boolean> {
-    if (options?.forceQuit) {
-      this.forceQuit = true;
-    }
+  quit(): Promise<boolean> {
     if (this.pendingQuitPromise) {
       return this.pendingQuitPromise;
     }
