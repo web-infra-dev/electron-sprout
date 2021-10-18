@@ -23,8 +23,8 @@ importers:
       '@babel/runtime': ^7.15.3
       '@electron/remote': ^1.2.1
       '@modern-js/app-tools': ^1.0.0-rc.0
-      '@modern-js/electron-test': workspace:^1.0.0-rc.10
-      '@modern-js/plugin-electron': workspace:^1.0.0-rc.10
+      '@modern-js/electron-test': workspace:^1.0.0-rc.11
+      '@modern-js/plugin-electron': workspace:^1.0.0-rc.11
       '@modern-js/plugin-testing': ^1.0.0-rc.0
       '@modern-js/runtime': ^1.0.0-rc.0
       '@types/jest': ^26.0.9
@@ -63,7 +63,7 @@ importers:
   packages/electron-bridge:
     specifiers:
       '@babel/runtime': ^7.15.3
-      '@modern-js/electron-runtime': workspace:^1.0.0-rc.12
+      '@modern-js/electron-runtime': workspace:^1.0.0-rc.13
       '@modern-js/module-tools': ^1.0.0-rc.0
       '@types/jest': ^26.0.24
       '@types/node': ^14.17.9
@@ -110,11 +110,11 @@ importers:
     specifiers:
       '@babel/runtime': ^7.15.3
       '@modern-js/core': ^1.0.0-rc.0
-      '@modern-js/electron-bridge': workspace:^1.0.0-rc.11
-      '@modern-js/electron-log': workspace:^1.0.0-rc.12
-      '@modern-js/electron-runtime': workspace:^1.0.0-rc.12
-      '@modern-js/electron-test': workspace:^1.0.0-rc.10
-      '@modern-js/electron-tools': workspace:^1.0.0-rc.10
+      '@modern-js/electron-bridge': workspace:^1.0.0-rc.12
+      '@modern-js/electron-log': workspace:^1.0.0-rc.13
+      '@modern-js/electron-runtime': workspace:^1.0.0-rc.13
+      '@modern-js/electron-test': workspace:^1.0.0-rc.11
+      '@modern-js/electron-tools': workspace:^1.0.0-rc.11
       '@modern-js/module-tools': ^1.0.0-rc.0
       '@modern-js/plugin-testing': ^1.0.0-rc.0
       '@modern-js/utils': ^1.0.0-rc.0
@@ -155,7 +155,7 @@ importers:
     specifiers:
       '@babel/runtime': ^7.15.3
       '@electron/remote': ^1.2.1
-      '@modern-js/electron-log': workspace:^1.0.0-rc.12
+      '@modern-js/electron-log': workspace:^1.0.0-rc.13
       '@modern-js/module-tools': ^1.0.0-rc.0
       '@types/jest': ^26.0.24
       '@types/lodash.clonedeep': ^4.5.6
@@ -223,8 +223,8 @@ importers:
   packages/electron-test:
     specifiers:
       '@babel/runtime': ^7.15.3
-      '@modern-js/electron-runtime': workspace:^1.0.0-rc.12
-      '@modern-js/electron-tools': workspace:^1.0.0-rc.10
+      '@modern-js/electron-runtime': workspace:^1.0.0-rc.13
+      '@modern-js/electron-tools': workspace:^1.0.0-rc.11
       '@modern-js/module-tools': ^1.0.0-rc.0
       '@types/jest': ^26.0.24
       '@types/node': ^14.17.11
@@ -258,7 +258,7 @@ importers:
       '@babel/register': ^7.15.3
       '@babel/runtime': ^7.15.3
       '@modern-js/babel-compiler': ^1.0.0-rc.0
-      '@modern-js/electron-log': workspace:^1.0.0-rc.12
+      '@modern-js/electron-log': workspace:^1.0.0-rc.13
       '@modern-js/module-tools': ^1.0.0-rc.0
       '@types/babel__core': ^7.1.16
       '@types/cross-spawn': ^6.0.2
