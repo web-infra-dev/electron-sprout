@@ -1,5 +1,5 @@
 import { app } from 'electron';
-import { IWindowsBaseConfig } from 'typings';
+import { IWindowsBaseConfig } from '../../interfaces/common';
 import { IS_DEV } from './constants';
 
 const APP_ROOT = IS_DEV ? process.cwd() : app.getAppPath();
