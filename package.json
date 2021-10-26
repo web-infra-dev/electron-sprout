@@ -61,8 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@modern-js/monorepo-tools": "^1.0.0-rc.0",
-    "@modern-js/plugin-jarvis": "^1.0.0-rc.0",
+    "@modern-js/monorepo-tools": "^1.0.0",
+    "@modern-js/plugin-jarvis": "^1.0.0",
     "fs-extra": "^10.0.0",
     "json5": "^2.2.0"
   },

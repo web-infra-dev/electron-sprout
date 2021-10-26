@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "test-modern-electron",
-  "version": "1.0.0-rc.20",
+  "version": "1.0.0",
   "main": "./electron/main.js",
   "scripts": {
     "new": "modern new",
@@ -52,17 +52,17 @@
   ],
   "dependencies": {
     "@electron/remote": "^1.2.1",
-    "@modern-js/runtime": "^1.0.0-rc.0",
+    "@modern-js/runtime": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.3",
-    "@modern-js/app-tools": "^1.0.0-rc.0",
-    "@modern-js/electron-test": "workspace:^1.0.0-rc.20",
-    "@modern-js/plugin-electron": "workspace:^1.0.0-rc.20",
-    "@modern-js/plugin-testing": "^1.0.0-rc.0",
+    "@modern-js/app-tools": "^1.0.0",
+    "@modern-js/electron-test": "workspace:^1.0.0",
+    "@modern-js/plugin-electron": "workspace:^1.0.0",
+    "@modern-js/plugin-testing": "^1.0.0",
     "@types/jest": "^26.0.9",
     "@types/node": "^14",
     "@types/react": "^17",

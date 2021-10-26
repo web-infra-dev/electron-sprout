@@ -28,6 +28,14 @@ To develop locally:
     pnpm run setup
     ```
 
+5. Go into package which you want to contribute.
+
+    ```zsh
+    cd ./packages/
+    ```
+
+6. Start developing.
+
 
 ## Building
 

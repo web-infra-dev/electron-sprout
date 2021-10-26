@@ -15,7 +15,7 @@
     "modern",
     "modern.js"
   ],
-  "version": "1.0.0-rc.21",
+  "version": "1.0.0",
   "jsnext:source": "./src/index.ts",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/js/node/index.js",
@@ -33,8 +33,8 @@
     "@babel/runtime": "^7.15.3"
   },
   "devDependencies": {
-    "@modern-js/module-tools": "^1.0.0-rc.0",
-    "@modern-js/electron-runtime": "workspace:^1.0.0-rc.22",
+    "@modern-js/module-tools": "^1.0.0",
+    "@modern-js/electron-runtime": "workspace:^1.0.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^14.17.9",
     "@types/react": "^17.0.18",
