@@ -3,12 +3,7 @@ import { join } from 'path';
 import spawn from 'cross-spawn';
 import { dirname } from 'upath';
 import { tscCode } from '../build';
-import {
-  DEFAULT_ELECTRON_MAIN_FOLDER,
-  getElectronMainEntryPath,
-  ENV_NAME,
-  isTsProject,
-} from '@/utils';
+import { DEFAULT_ELECTRON_MAIN_FOLDER, ENV_NAME } from '@/utils';
 
 // start main process
 export const devMainProcess = (options: {
