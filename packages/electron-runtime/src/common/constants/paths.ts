@@ -1,5 +1,5 @@
 import { app } from 'electron';
-import { IWindowsBaseConfig } from 'typings';
+import { IWindowsBaseConfig } from '../../interfaces/common';
 import { IS_DEV } from './constants';
 
 const APP_ROOT = IS_DEV ? process.cwd() : app.getAppPath();
@@ -15,7 +15,7 @@ const defaultLoadUrl = (options: {
 
   const _devBaseUrl = devBaseUrl
     ? devBaseUrl(winName)
-    : `https://localhost:8080/${name}`;
+    : `http://localhost:8080/${name}`;
 
   const _prodBaseUrl = prodBaseUrl
     ? prodBaseUrl(winName)

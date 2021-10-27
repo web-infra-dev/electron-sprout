@@ -1,6 +1,6 @@
 import { Client } from '../../../core/base/parts/ipc/electron-browser/ipc.electron-browser';
 import { IChannel } from '../../../core/base/parts/ipc/common/ipc';
-import { IQuitOptions, ILifecycleService } from '../common/lifecycle';
+import { ILifecycleService } from '../common/lifecycle';
 
 export class LifecycleService implements ILifecycleService {
   private readonly mainProcessConnection: Client;
@@ -12,8 +12,8 @@ export class LifecycleService implements ILifecycleService {
     this.channel = this.getChannel('lifeCycle');
   }
 
-  quit(options?: IQuitOptions): Promise<boolean> {
-    return this.channel.call('quit', [options]);
+  quit(): Promise<boolean> {
+    return this.channel.call('quit');
   }
 
   kill(exitCode?: number): Promise<boolean> {

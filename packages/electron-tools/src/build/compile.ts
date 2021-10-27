@@ -2,6 +2,7 @@ import { join } from 'path';
 import { compiler } from '@modern-js/babel-compiler';
 import { babelConfig } from '../config';
 import { DEFAULT_ELECTRON_MAIN_FOLDER } from '../utils/paths';
+import { ENVS, ENV_NAME } from '@/utils';
 
 export type CompileOptions = {
   outDir?: string;
@@ -14,6 +15,8 @@ export type CompileOptions = {
   cwd?: string;
   outExt?: string;
 };
+
+const DEFAULT_IGNORE = ['**/tests/**/*', '**/*/*.dev.js'];
 
 export const compileMainProcess = (options: {
   userProjectPath: string; // start folder
@@ -33,7 +36,7 @@ export const compileMainProcess = (options: {
     distDir: outDir,
     quiet: false,
     sourceMaps: false,
-    ignore: ['**/tests/**/*', '**/*/*.dev.js'],
+    ignore: DEFAULT_IGNORE,
     sourceDir: join(userProjectPath, mainProcessFolder),
     rootDir: join(userProjectPath, mainProcessFolder),
     extensions: ['.ts', '.js'],
@@ -45,8 +48,13 @@ export const compileMainProcess = (options: {
     if (babelConfig.hasOwnProperty('minified')) {
       return babelConfig.minified;
     }
-    return env.NODE_ENV !== 'development';
+
+    return env[ENVS.ELECTRON_BUILD_ENV] !== ENV_NAME.DEV;
   };
+
+  compileOptions.ignore = compileOptions.ignore || [];
+  compileOptions.ignore = compileOptions.ignore.concat(DEFAULT_IGNORE);
+
   console.log('compile options:', compileOptions, {
     ...babelConfig,
     minified: getMinified(),

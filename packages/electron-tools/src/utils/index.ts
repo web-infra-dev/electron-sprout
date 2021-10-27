@@ -5,3 +5,4 @@ export * from './platform';
 export * from './spawn';
 export * from './store';
 export * from './project';
+export * from './constant';

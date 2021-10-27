@@ -1,5 +1,149 @@
 # @modern-js/plugin-electron
 
+## 1.0.0-rc.20
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.21
+  - @modern-js/electron-log@1.0.0-rc.22
+  - @modern-js/electron-runtime@1.0.0-rc.22
+  - @modern-js/electron-test@1.0.0-rc.20
+  - @modern-js/electron-tools@1.0.0-rc.20
+
+## 1.0.0-rc.19
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.20
+  - @modern-js/electron-log@1.0.0-rc.21
+  - @modern-js/electron-runtime@1.0.0-rc.21
+  - @modern-js/electron-test@1.0.0-rc.19
+  - @modern-js/electron-tools@1.0.0-rc.19
+
+## 1.0.0-rc.18
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.19
+  - @modern-js/electron-log@1.0.0-rc.20
+  - @modern-js/electron-runtime@1.0.0-rc.20
+  - @modern-js/electron-test@1.0.0-rc.18
+  - @modern-js/electron-tools@1.0.0-rc.18
+
+## 1.0.0-rc.17
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.18
+  - @modern-js/electron-log@1.0.0-rc.19
+  - @modern-js/electron-runtime@1.0.0-rc.19
+  - @modern-js/electron-test@1.0.0-rc.17
+  - @modern-js/electron-tools@1.0.0-rc.17
+
+## 1.0.0-rc.16
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.17
+  - @modern-js/electron-log@1.0.0-rc.18
+  - @modern-js/electron-runtime@1.0.0-rc.18
+  - @modern-js/electron-test@1.0.0-rc.16
+  - @modern-js/electron-tools@1.0.0-rc.16
+
+## 1.0.0-rc.15
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.16
+  - @modern-js/electron-log@1.0.0-rc.17
+  - @modern-js/electron-runtime@1.0.0-rc.17
+  - @modern-js/electron-test@1.0.0-rc.15
+  - @modern-js/electron-tools@1.0.0-rc.15
+
+## 1.0.0-rc.14
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.15
+  - @modern-js/electron-log@1.0.0-rc.16
+  - @modern-js/electron-runtime@1.0.0-rc.16
+  - @modern-js/electron-test@1.0.0-rc.14
+  - @modern-js/electron-tools@1.0.0-rc.14
+
+## 1.0.0-rc.13
+
+### Patch Changes
+
+- 854d543: fix module tools version problem
+- 854d543: fix some types defination
+- 854d543: fix modules tools version problem
+- 519eee3: improve some cli descriptions and some params defination.
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [854d543]
+- Updated dependencies [519eee3]
+  - @modern-js/electron-bridge@1.0.0-rc.14
+  - @modern-js/electron-log@1.0.0-rc.15
+  - @modern-js/electron-runtime@1.0.0-rc.15
+  - @modern-js/electron-test@1.0.0-rc.13
+  - @modern-js/electron-tools@1.0.0-rc.13
+
 ## 1.0.0-rc.12
 
 ### Patch Changes

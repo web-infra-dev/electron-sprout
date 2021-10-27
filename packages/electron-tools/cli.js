@@ -2,7 +2,13 @@
 const { join } = require('path');
 const { cliLog } = require('@modern-js/electron-log');
 const program = require('commander');
-const { devMainProcess, buildMainProcess, pack } = require('./dist/js/node');
+const {
+  devMainProcess,
+  buildMainProcess,
+  pack,
+  ENVS,
+  ENV_NAME,
+} = require('./dist/js/node');
 
 /**
  * start main process
@@ -39,11 +45,15 @@ program
   .action(options => {
     const userProjectPath = process.cwd();
     const processEnv = process.env;
-    processEnv.NODE_ENV = options.development ? 'development' : 'production';
     const compileOptions = {};
     if (options.ignore) {
       compileOptions.ignore = options.ignore.split(',');
     }
+
+    process.env[ENVS.ELECTRON_BUILD_ENV] = options.development
+      ? ENV_NAME.DEV
+      : ENV_NAME.PROD;
+
     buildMainProcess({
       userProjectPath,
       env: processEnv,
@@ -62,7 +72,6 @@ program
   .action(() => {
     const userProjectPath = process.cwd();
     const processEnv = process.env;
-    // processEnv.NODE_ENV = options.development ? 'development' : 'production';
     // if is dev, do not use byte encr.
     const pkg = require(join(userProjectPath, 'package.json'));
 

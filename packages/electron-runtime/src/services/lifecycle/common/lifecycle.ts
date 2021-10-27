@@ -10,7 +10,7 @@ export const ILifecycleService =
   createDecorator<ILifecycleService>('lifecycleService');
 
 export interface ILifecycleService {
-  quit(options?: IQuitOptions): Promise<boolean>;
+  quit(): Promise<boolean>;
   call(funcName: string, ...args: any): Promise<any>;
   kill(exitCode?: number): Promise<boolean>;
   relaunch(options?: {
@@ -99,10 +99,6 @@ export interface IWindowUnloadEvent {
   veto: (value: boolean | Promise<boolean>) => void;
 }
 
-export interface IQuitOptions {
-  forceQuit?: boolean;
-}
-
 export type IRelaunchOptions = {
   addArgs?: string[];
   removeArgs?: string[];
@@ -124,7 +120,7 @@ export interface ILifecycleMainService {
   registerWindow: (window: IWindow) => void;
   setForceQuit: (forceQuit: boolean) => void;
   getWindowCounter: () => number;
-  quit: (quitOptions?: IQuitOptions) => Promise<boolean /* veto */>;
+  quit: () => Promise<boolean /* veto */>;
   kill: (code?: number) => void;
   relaunch: (options?: IRelaunchOptions) => void;
   when: (phase: LifecycleMainPhase) => Promise<void>;

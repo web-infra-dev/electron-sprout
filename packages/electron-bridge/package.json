@@ -1,6 +1,21 @@
 {
   "name": "@modern-js/electron-bridge",
-  "version": "1.0.0-rc.13",
+  "description": "The meta-framework suite designed from scratch for frontend-focused modern web development.",
+  "homepage": "https://modernjs.dev",
+  "bugs": "https://github.com/modern-js-dev/electron-sprout/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modern-js-dev/electron-sprout.git",
+    "directory": "packages/electron-bridge"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "framework",
+    "modern",
+    "modern.js"
+  ],
+  "version": "1.0.0",
   "jsnext:source": "./src/index.ts",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/js/node/index.js",
@@ -18,8 +33,8 @@
     "@babel/runtime": "^7.15.3"
   },
   "devDependencies": {
-    "@modern-js/module-tools": "^1.0.0-rc.0",
-    "@modern-js/electron-runtime": "workspace:^1.0.0-rc.14",
+    "@modern-js/module-tools": "^1.0.0",
+    "@modern-js/electron-runtime": "workspace:^1.0.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^14.17.9",
     "@types/react": "^17.0.18",

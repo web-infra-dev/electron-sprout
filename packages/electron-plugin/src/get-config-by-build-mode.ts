@@ -1,14 +1,14 @@
 import type { Configuration } from 'webpack';
 import type Chain from 'webpack-chain';
 import type { IAppContext } from '@modern-js/core';
-import { BUILD_MODE } from './constant';
+import { BUILD_MODE, ENV_NAME } from './constant';
 
 const getDevOptions = (isDev: boolean, port: number) => {
   // solve the problem of sources loading when using file protocal in dev.
   const devOptions = isDev
     ? {
         dev: {
-          assetPrefix: `https://localhost:${port}/`,
+          assetPrefix: `http://localhost:${port}/`,
         },
       }
     : {};
@@ -28,7 +28,7 @@ export const getBuildMode = () => {
 
 // only support fileProtocol in dev with all entries. can't define it by entry.
 export const getConfigByBuildMode = (appContext: IAppContext) => {
-  const isDev = process.env.NODE_ENV === 'development';
+  const isDev = process.env.NODE_ENV === ENV_NAME.DEV;
   const port = appContext?.port || 8080;
   const baseElectronConfig = {
     ...getDevOptions(isDev, port),

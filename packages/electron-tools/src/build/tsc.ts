@@ -5,12 +5,15 @@ import { existsSync } from 'fs-extra';
 import execa from 'execa';
 import { DEFAULT_ELECTRON_MAIN_FOLDER } from '@/utils';
 
-const typescrptCli = join(
-  dirname(require.resolve('typescript')),
-  '..',
-  'bin',
-  'tsc',
-);
+const getTypescriptCli = () => {
+  try {
+    return join(dirname(require.resolve('typescript')), '..', 'bin', 'tsc');
+  } catch (error) {
+    return '';
+  }
+};
+
+const typescrptCli = getTypescriptCli();
 
 export interface TscOptions {
   mainProcessFolder?: string; // relative to userProjectPath.

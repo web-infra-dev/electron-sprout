@@ -1,3 +1,5 @@
+import { ENVS as _ENVS, ENV_NAME } from '@modern-js/electron-tools';
+
 export const BUILD_MODE = {
   ELECTRON_MAIN: 'electron-main',
   ELECTRON_WEB: 'electron-web',
@@ -19,4 +21,8 @@ export const USER_CLI_COMMAND = {
 export const ENVS = {
   IS_ELECTRON_COMMAND: 'IS_ELECTRON_COMMAND', // is start main process command
   MAIN_PROCESS_ENTRY_FILE: 'MAIN_PROCESS_ENTRY_FILE',
+  BUILD_MODE: 'BUILD_MODE',
+  ..._ENVS,
 };
+
+export { ENV_NAME };
