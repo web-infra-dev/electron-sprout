@@ -1,3 +1,8 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 import { ipcRenderer } from 'electron';
 import { Event, Emitter } from '../../../common/event';
 import { IPCServer, ClientConnectionEvent, IPCClient } from '../common/ipc';

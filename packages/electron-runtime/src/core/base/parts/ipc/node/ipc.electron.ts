@@ -1,7 +1,11 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 import { IMessagePassingProtocol } from '../common/ipc';
 import { Event } from '../../../common/event';
 import { VSBuffer } from '../../../common/buffer';
-import { IDisposable } from '@/common';
 
 export interface Sender {
   send: (channel: string, msg: Buffer | null) => void;
