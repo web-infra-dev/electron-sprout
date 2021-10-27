@@ -1,3 +1,4 @@
+
 import { ipcRenderer } from 'electron';
 import { Event } from '../../../common/event';
 import { IPCClient } from '../common/ipc';

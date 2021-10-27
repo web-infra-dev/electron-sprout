@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+
 import { mainLog } from '@modern-js/electron-log';
 import { onUnexpectedError } from './errors';
 import { once as onceFn } from './functional';
