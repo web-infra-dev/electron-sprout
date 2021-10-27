@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "electron-sprout",
-  "description": "Electron Sprout is a Modern Framework base on Electron",
+  "description": "Electron Sprout is a Modern Framework base on Electron.",
   "scripts": {
     "new": "modern new",
     "setup": "npm run reset && pnpm install --ignore-scripts",
