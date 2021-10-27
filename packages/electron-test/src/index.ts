@@ -113,14 +113,14 @@ class ElectronTestDriver {
     this.process.kill();
   }
 
-  async call(data: {
+  async call(options: {
     funcName: string;
     winName?: string;
     args?: any[];
   }): Promise<any> {
     // send rpc request
     const msgId = this.rpcCalls.length;
-    this.process.send({ ...data, msgId });
+    this.process.send({ ...options, msgId });
     return new Promise((resolve, reject) =>
       this.rpcCalls.push({ resolve, reject }),
     );
