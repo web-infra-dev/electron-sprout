@@ -18,6 +18,7 @@
 > The doc site ([modernjs.dev](https://modernjs.dev)) and articles are only available in Chinese for now, we are planning to add English versions soon.
 
 - [Modern.js: Hello, World!](https://zhuanlan.zhihu.com/p/426707646)
+
 ## Getting Started
 
 - [Quick Start](https://modernjs.dev/docs/start)
