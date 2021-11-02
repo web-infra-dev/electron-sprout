@@ -11,9 +11,7 @@
     "change": "modern change",
     "bump": "modern bump",
     "pre": "modern pre",
-    "release": "modern release",
-    "publish-alpha": "ACTION='publish' node ./scripts/publish-dev.js && yarn recover-version",
-    "recover-version": "node ./scripts/publish-dev.js"
+    "release": "modern release"
   },
   "engines": {
     "node": ">=12.13.0"

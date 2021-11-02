@@ -8,16 +8,12 @@ module.exports = {
 
   tools: {
     babel(opts) {
+      opts.plugins = opts.plugins.slice(1, opts.plugins.length);
       opts.plugins.push(['@vjpr/babel-plugin-parameter-decorator', {}]);
-      opts.presets.pop();
-      opts.presets.push([
-        require.resolve('@babel/preset-typescript'),
-        {
-          allowDeclareFields: true,
-          allowNamespaces: true,
-          onlyRemoveTypeImports: true,
-        },
-      ]);
+      const preset = opts.presets.filter(p =>
+        p[0].includes('@babel/preset-typescript'),
+      )[0];
+      preset[1].onlyRemoveTypeImports = true;
     },
   },
 };

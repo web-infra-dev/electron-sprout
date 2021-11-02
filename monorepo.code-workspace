@@ -21,10 +21,6 @@
       "path": "packages/electron-bridge/"
     },
     {
-      "name": "electron-demo",
-      "path": "apps/electron-demo"
-    },
-    {
       "name": "electron-runtime",
       "path": "packages/electron-runtime/"
     },
@@ -45,10 +41,6 @@
       "htmlhintrc": "jsonc",
       "Procfile*": "shellscript",
       "README": "markdown"
-    },
-    "files.exclude": {
-      "**/*/adapters/**/index.ts": true,
-      "**/*/adapters/**/index.js": true
     },
     "search.useIgnoreFiles": true,
     "search.exclude": {

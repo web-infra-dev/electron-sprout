@@ -1,9 +1,6 @@
 {
-  "fileheader.Author": "Pikun",
-  "fileheader.LastModifiedBy": "Pikun",
   "files.associations": {
     ".code-workspace": "jsonc",
-    "*.json": "jsonc",
     ".babelrc": "json",
     ".eslintrc": "jsonc",
     ".eslintrc*.json": "jsonc",
@@ -13,14 +10,6 @@
     "htmlhintrc": "jsonc",
     "Procfile*": "shellscript",
     "README": "markdown"
-  },
-  "files.exclude": {
-    // "packages/**/**.js": {
-    //   "when": "$(basename).ts"
-    // },
-    // "packages/**/**.d.ts": {
-    //   "when": "$(basename).ts"
-    // }
   },
   "search.useIgnoreFiles": true,
   "search.exclude": {
