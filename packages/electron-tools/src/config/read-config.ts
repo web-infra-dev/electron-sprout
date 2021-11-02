@@ -18,8 +18,8 @@ export const readConfig = (projectPath: string) => {
 };
 
 const doReadConfig = (projectPath: string, moduleName: string) => {
-  const explorer = (_moduleName: string, _projectPath: string) => {
-    return cosmiconfigSync(moduleName, {
+  const explorer = (_moduleName: string, _projectPath: string) =>
+    cosmiconfigSync(moduleName, {
       stopDir: projectPath,
       searchPlaces: [
         `.${moduleName}rc`,
@@ -30,7 +30,6 @@ const doReadConfig = (projectPath: string, moduleName: string) => {
         `${moduleName}.config.js`,
       ],
     });
-  };
   const searched = explorer(moduleName, projectPath).search(projectPath);
   return searched?.config || null;
 };

@@ -27,6 +27,7 @@ export const buildMainProcess = async (options: {
     externalDependencies,
     ignoreDependencies,
     exitWhenDone,
+    env,
   } = options;
   const { outDir } = getProjectInfo(options);
 
@@ -34,6 +35,11 @@ export const buildMainProcess = async (options: {
     mainProcessFolder,
     userProjectPath,
   });
+
+  process.env = {
+    ...process.env,
+    ...env,
+  };
 
   // compile
   const result = await compileMainProcess({
