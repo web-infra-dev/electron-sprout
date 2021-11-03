@@ -1,6 +1,6 @@
 import { mainLog } from '@modern-js/electron-log';
 import { app, Menu } from 'electron';
-import { initialize } from '@electron/remote/main';
+import { initRemote } from './common/utils/initRemote';
 import { Application } from './application';
 import { IS_DEV } from './common/constants/constants';
 import { handleWindowConfig } from './common/user-config';
@@ -39,7 +39,7 @@ class ElectronRuntime {
   }
 
   private initEnvironment() {
-    initialize();
+    initRemote();
     configureCommandlineSwitche();
     fixEnvsInMainProcess();
   }

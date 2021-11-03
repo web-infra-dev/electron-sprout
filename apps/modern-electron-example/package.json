@@ -44,7 +44,7 @@
     ".rpt2_cache/"
   ],
   "dependencies": {
-    "@electron/remote": "^1",
+    "@electron/remote": "^2",
     "@modern-js/electron-bridge": "^1.0.0",
     "@modern-js/electron-tools": "^1.0.0",
     "@modern-js/plugin-electron": "workspace:^1",
@@ -64,7 +64,7 @@
     "@types/node": "^14",
     "@types/react": "^17",
     "@types/react-dom": "^17",
-    "electron": "^13",
+    "electron": "^14",
     "electron-builder": "^22.11.7",
     "typescript": "^4"
   }
