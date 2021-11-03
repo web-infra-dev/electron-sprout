@@ -1,0 +1,22 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "isolatedModules": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "allowUnusedLabels": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    "typeRoots": ["./typings"],
+    "types": []
+  },
+  "include": ["src", "libs", "typings"]
+}

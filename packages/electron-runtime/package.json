@@ -1,0 +1,88 @@
+{
+  "name": "@modern-js/electron-runtime",
+  "description": "The meta-framework suite designed from scratch for frontend-focused modern web development.",
+  "homepage": "https://modernjs.dev",
+  "bugs": "https://github.com/modern-js-dev/electron-sprout/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modern-js-dev/electron-sprout.git",
+    "directory": "packages/electron-runtime"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "framework",
+    "modern",
+    "modern.js"
+  ],
+  "version": "1.0.1",
+  "jsnext:source": "./src/index.ts",
+  "main": "./dist/js/node/index.js",
+  "types": "./dist/types/index.d.ts",
+  "module": "./dist/js/treeshaking/index.js",
+  "jsnext:modern": "./dist/js/modern/index.js",
+  "exports": {
+    ".": "./dist/js/node/index.js",
+    "./render": "./dist/js/node/index.render.js",
+    "./webview": "./dist/js/node/index.webview.js"
+  },
+  "typesVersions": {
+    "*": {
+      "render": [
+        "./dist/types/index.render.d.ts"
+      ],
+      "webview": [
+        "./dist/types/index.webview.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "prepare": "pnpm build",
+    "new": "modern new",
+    "build": "modern build && node ./scripts/copy-lib-to-dist.js"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.3",
+    "@electron/remote": "^1.2.1",
+    "@modern-js/electron-log": "workspace:^1.0.1",
+    "axios": "^0.21.1",
+    "debug": "^4.3.2",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-updater": "^4.3.9",
+    "fs-extra": "^10.0.0",
+    "if-async": "^3.7.4",
+    "json5": "^2.2.0",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isarray": "^4.0.0",
+    "lodash.mergewith": "^4.6.2",
+    "query-string": "^7.0.1",
+    "regedit": "^4.0.0",
+    "shell-env": "^3.0.1",
+    "shell-path": "^2.1.0",
+    "stream-slicer": "^0.0.6",
+    "through2": "^4.0.2",
+    "upath": "^2.0.1",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "@modern-js/module-tools": "^1.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/lodash.isarray": "^4.0.6",
+    "@types/lodash.mergewith": "^4.6.6",
+    "@types/node": "^14.17.9",
+    "@types/react": "^17.0.18",
+    "@types/react-dom": "^17.0.9",
+    "@vjpr/babel-plugin-parameter-decorator": "^1.0.15",
+    "tslib": "^2.3.0",
+    "typescript": "^4"
+  },
+  "peerDependencies": {
+    "electron": ">=11.0.3 <14.0.0"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

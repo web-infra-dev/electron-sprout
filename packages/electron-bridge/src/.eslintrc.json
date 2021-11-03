@@ -1,0 +1,6 @@
+{
+  "extends": ["@modern-js-app"],
+  "rules": {
+    "filenames/match-exported": "off"
+  }
+}

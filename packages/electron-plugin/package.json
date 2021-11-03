@@ -1,0 +1,89 @@
+{
+  "name": "@modern-js/plugin-electron",
+  "description": "The meta-framework suite designed from scratch for frontend-focused modern web development.",
+  "homepage": "https://modernjs.dev",
+  "bugs": "https://github.com/modern-js-dev/electron-sprout/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modern-js-dev/electron-sprout.git",
+    "directory": "packages/electron-plugin"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "framework",
+    "modern",
+    "modern.js"
+  ],
+  "version": "1.0.1",
+  "jsnext:source": "./src/index.ts",
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/js/node/index.js",
+  "module": "./dist/js/treeshaking/index.js",
+  "jsnext:modern": "./dist/js/modern/index.js",
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./dist/js/modern/index.js",
+        "require": "./dist/js/node/index.js"
+      },
+      "default": "./dist/js/treeshaking/index.js"
+    },
+    "./cli": "./dist/js/node/index.js",
+    "./main": "./dist/js/node/apis/main.js",
+    "./webview": "./dist/js/node/apis/webview.js",
+    "./bridge": "./dist/js/node/apis/bridge.js",
+    "./render": "./dist/js/node/apis/render.js",
+    "./tools": "./dist/js/node/apis/tools.js",
+    "./test.render": "./dist/js/node/apis/test.render.js",
+    "./test.main": "./dist/js/node/apis/test.main.js",
+    "./test.webview": "./dist/js/node/apis/test.webview.js",
+    "./test": "./dist/js/node/apis/test.js"
+  },
+  "typesVersions": {
+    "*": {
+      "global": [
+        "./global.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "prepare": "pnpm build",
+    "new": "modern new",
+    "test": "modern test",
+    "build": "modern build"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.3",
+    "@modern-js/core": "^1.0.0",
+    "@modern-js/electron-bridge": "workspace:^1.0.1",
+    "@modern-js/electron-log": "workspace:^1.0.1",
+    "@modern-js/electron-runtime": "workspace:^1.0.1",
+    "@modern-js/electron-test": "workspace:^1.0.1",
+    "@modern-js/electron-tools": "workspace:^1.0.1",
+    "@modern-js/utils": "^1.0.0",
+    "fs-extra": "^10.0.0"
+  },
+  "peerDependencies": {
+    "@modern-js/app-tools": ">=0.1.9",
+    "@modern-js/electron-runtime": "workspace:^1.0.1"
+  },
+  "devDependencies": {
+    "@modern-js/module-tools": "^1.0.0",
+    "@modern-js/plugin-testing": "^1.0.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^14.17.26",
+    "@types/react": "^17.0.18",
+    "@types/react-dom": "^17.0.9",
+    "jest-environment-jsdom": "^27.0.6",
+    "typescript": "^4",
+    "webpack": "^5",
+    "webpack-chain": "^6.5.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

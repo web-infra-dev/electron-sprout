@@ -1,0 +1,71 @@
+{
+  "name": "modern-electron-example",
+  "version": "1.0.0",
+  "main": "./electron/main.js",
+  "scripts": {
+    "new": "modern new",
+    "reset": "rm -rf node_modules",
+    "test": "modern test",
+    "dev": "FAST_REFRESH=false modern dev",
+    "dev:main": "modern dev electron-main",
+    "dev:electron": "modern dev electron",
+    "build:electron": "PLATFORM=mac modern build electron",
+    "build": "modern build",
+    "start": "modern start",
+    "preview": "modern deploy --mode preview",
+    "deploy": "modern deploy"
+  },
+  "engines": {
+    "node": ">=12.17.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ],
+    "*.{js,jsx,mjs,mjsx,cjs,cjsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@modern-js"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/",
+    ".rpt2_cache/"
+  ],
+  "dependencies": {
+    "@electron/remote": "^1",
+    "@modern-js/electron-bridge": "^1.0.0",
+    "@modern-js/electron-tools": "^1.0.0",
+    "@modern-js/plugin-electron": "workspace:^1",
+    "@modern-js/runtime": "^1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
+    "@modern-js/app-tools": "^1",
+    "@modern-js/electron-test": "^1",
+    "@modern-js/plugin-jarvis": "^1.0.0",
+    "@modern-js/plugin-testing": "^1",
+    "@modern-js/tsconfig": "*",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
+    "electron": "^13",
+    "electron-builder": "^22.11.7",
+    "typescript": "^4"
+  }
+}
