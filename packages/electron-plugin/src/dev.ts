@@ -1,5 +1,5 @@
 import { join, dirname } from 'path';
-import { spawn } from 'child_process';
+import spawn from 'cross-spawn';
 import { devMainProcess } from '@modern-js/electron-tools';
 import { BUILD_MODE, ENVS, ENV_NAME, PROCESS_TYPE } from './constant';
 import { processManager } from './process-manager';
