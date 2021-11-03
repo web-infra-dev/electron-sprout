@@ -18,7 +18,7 @@ const customizer = (objValue: any, srcValue: any) => {
         others.push(each);
       }
     });
-    (objValue || []).forEach(each => {
+    (objValue || []).forEach((each: any) => {
       if (typeof each === 'object') {
         coreObjects.push(each);
       } else {
