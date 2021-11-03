@@ -4,7 +4,7 @@
   "description": "Electron Sprout is a Modern Framework base on Electron.",
   "scripts": {
     "new": "modern new",
-    "setup": "npm run reset && pnpm install --ignore-scripts",
+    "setup": "npm run reset && pnpm install",
     "reset": "pnpm -r exec rm -rf ./node_modules",
     "lint": "modern lint",
     "lint:error": "modern lint --quiet",
