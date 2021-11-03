@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 2.0.0
+
+### Major Changes
+
+- publish v2.0.0 for @electron/remote
+
 ## 1.0.2
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @modern-js/electron-runtime
 
+## 2.0.0
+
+### Major Changes
+
+- publish v2.0.0 for @electron/remote
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@2.0.0
+
 ## 1.0.2
 
 ### Patch Changes
