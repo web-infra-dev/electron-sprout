@@ -6,7 +6,7 @@ import { createDecorator } from '../../../core/instantiation/instantiation';
 export const IUpdateService = createDecorator<IUpdateService>('updateService');
 
 export interface IUpdateService {
-  checkUpdate(options: UpdateOption): void;
+  checkUpdate(options: UpdateOption): Promise<any>;
   onUpdateProgress(
     callBack: (progress: IUpdateProgressInfo) => any,
   ): IDisposable;
