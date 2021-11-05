@@ -55,6 +55,10 @@ export class LifecycleService
     return this._phase;
   }
 
+  getForceQuit(): boolean {
+    return this.forceQuit;
+  }
+
   getWindowCounter(): number {
     return this.windowCounter;
   }
