@@ -50,9 +50,12 @@ program
       compileOptions.ignore = options.ignore.split(',');
     }
 
+    // used for whether to compress js.
     process.env[ENVS.ELECTRON_BUILD_ENV] = options.development
       ? ENV_NAME.DEV
       : ENV_NAME.PROD;
+
+    process.env.NODE_ENV = ENV_NAME.PROD;
 
     buildMainProcess({
       userProjectPath,
