@@ -118,6 +118,7 @@ export interface ILifecycleMainService {
     getWinConfig: (winName: string) => WindowConfig | undefined,
   );
   registerWindow: (window: IWindow) => void;
+  getForceQuit: () => boolean;
   setForceQuit: (forceQuit: boolean) => void;
   getWindowCounter: () => number;
   quit: () => Promise<boolean /* veto */>;

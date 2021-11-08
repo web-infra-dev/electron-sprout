@@ -29,5 +29,6 @@ app.whenReady().then(async () => {
   winService.createWindow({
     name: 'main',
     addBeforeCloseListener: true,
+    hideWhenClose: true,
   });
 });
