@@ -227,8 +227,10 @@ export class WebviewService extends Disposable implements IWebviewService {
         const result = await connection.channelClient
           .getChannel(WEBVIEW_IPC_CHANNEL_NAME)
           .call(request.funcName, request.data);
+        console.log('flushPendingRequests result:', result);
         request.promise.resolve && request.promise.resolve(result);
       } catch (error) {
+        console.log('flushPendingRequests:', error);
         request.promise.reject && request.promise.reject(error);
       }
     };
@@ -245,6 +247,7 @@ export class WebviewService extends Disposable implements IWebviewService {
     // still need to create channel
     // if addWebview is used after registereds, here should registerServices
     if (this.services) {
+      console.log('createWebviewIpcServer create services');
       const channel = createChannelReceiver(this.services);
       server.registerChannel(WEBVIEW_IPC_CHANNEL, channel);
     }
@@ -254,6 +257,7 @@ export class WebviewService extends Disposable implements IWebviewService {
       // if connect to the server, stop to send msg.
       // so can make sure that webview has known server created.
       const timer = setInterval(() => {
+        console.log('createWebviewIpcServer send ipc created msg');
         this.sendToWebview(webviewId, PARENT_WINDOW_IPC_SERVER_CREATED_CHANNEL);
       }, 400);
 
@@ -268,6 +272,8 @@ export class WebviewService extends Disposable implements IWebviewService {
         server.onDidChangeConnections,
       );
       onDidChangeConnections((e: Connection<string>) => {
+        console.log('createWebviewIpcServer connection has build, flush pending request', server.connections.length);
+        server.connections.map(x => console.log('createWebviewIpcServer connection:', x.ctx));
         hasConnected = true;
         clearInterval(timer);
         clearTimeout(timeout);
@@ -282,12 +288,15 @@ export class WebviewService extends Disposable implements IWebviewService {
     webviewId: string,
     withIpcServer = true,
   ): WebviewIpcServer | undefined {
-    const webview = this.getWebviewById(webviewId);
 
+    const webview = this.getWebviewById(webviewId);
+    console.log('addWebview webview:', webview);
     if (webview) {
       let server: WebviewIpcServer | undefined;
       if (withIpcServer) {
+
         server = this.createWebviewIpcServer(webviewId, webview);
+        console.log('addWebview webview ipcServer:', webviewId, server);
       }
 
       this.webviewServers.set(webviewId, {

@@ -21,6 +21,7 @@ export interface IWebviewService {
     withIpcServer?: boolean,
   ): WebviewIpcServer | undefined;
   sendToWebview(webviewId: string, channel: string, ...args: any): void;
+  removeWebviewIpcServer(webviewId: string): void;
   broadCast(channel: string, ...args: any[]): void;
   dispose(): void;
   onMessage<T>(webviewId: string, channel: string): CommonEvent<T>;
