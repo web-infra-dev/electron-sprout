@@ -1,5 +1,17 @@
 # @modern-js/plugin-electron
 
+## 1.0.3
+
+### Patch Changes
+
+- publish v1.0.3
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.3
+  - @modern-js/electron-log@1.0.3
+  - @modern-js/electron-runtime@1.0.3
+  - @modern-js/electron-test@1.0.3
+  - @modern-js/electron-tools@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
