@@ -1,5 +1,13 @@
 # @modern-js/electron-runtime
 
+## 2.0.1
+
+### Patch Changes
+
+- publish v2.0.1
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
