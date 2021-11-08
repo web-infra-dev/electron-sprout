@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 1.0.3
+
+### Patch Changes
+
+- publish v1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
