@@ -11,6 +11,7 @@ export interface IWebviewService {
   registerServices(services: object): void;
   setTimeoutDelay(timeoutDelay: number): void;
   getWebviewIds(): number[];
+  removeWebviewIpcServer(webviewId: string): void;
   callWebview(
     webviewId: string,
     funcName: string,
