@@ -282,11 +282,12 @@ export class WebviewService extends Disposable implements IWebviewService {
     webviewId: string,
     withIpcServer = true,
   ): WebviewIpcServer | undefined {
-    const webview = this.getWebviewById(webviewId);
 
+    const webview = this.getWebviewById(webviewId);
     if (webview) {
       let server: WebviewIpcServer | undefined;
       if (withIpcServer) {
+
         server = this.createWebviewIpcServer(webviewId, webview);
       }
 

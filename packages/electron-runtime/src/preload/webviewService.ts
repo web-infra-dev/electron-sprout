@@ -6,6 +6,9 @@ export const webviewService = {
   setTimeoutDelay(timeoutDelay: number) {
     return service.setTimeoutDelay(timeoutDelay);
   },
+  removeWebviewIpcServer(webviewId: string) {
+    return service.removeWebviewIpcServer(webviewId);
+  },
   callWebview(
     webviewId: string,
     funcName: string,
