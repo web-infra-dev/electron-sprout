@@ -1,6 +1,6 @@
 {
   "name": "modern-electron-example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./electron/main.js",
   "scripts": {
     "new": "modern new",
@@ -45,9 +45,9 @@
   ],
   "dependencies": {
     "@electron/remote": "^1",
-    "@modern-js/electron-bridge": "^1.0.0",
-    "@modern-js/electron-tools": "^1.0.0",
-    "@modern-js/plugin-electron": "workspace:^1",
+    "@modern-js/electron-bridge": "^1.0.4",
+    "@modern-js/electron-tools": "^1.0.4",
+    "@modern-js/plugin-electron": "workspace:^1.0.4",
     "@modern-js/runtime": "^1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
@@ -56,7 +56,7 @@
     "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.4",
     "@modern-js/app-tools": "^1",
-    "@modern-js/electron-test": "^1",
+    "@modern-js/electron-test": "^1.0.4",
     "@modern-js/plugin-jarvis": "^1.0.0",
     "@modern-js/plugin-testing": "^1",
     "@modern-js/tsconfig": "*",
