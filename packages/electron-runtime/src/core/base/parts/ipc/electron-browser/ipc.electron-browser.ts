@@ -103,7 +103,8 @@ export class WebviewIpcServer extends IPCServer {
       const client = WebviewIpcServer.Clients.get(webviewId);
 
       if (client) {
-        client.dispose();
+        // client.dispose();
+        WebviewIpcServer.Clients.delete(webviewId);
       }
 
       const onDidClientReconnect = new Emitter<void>();
