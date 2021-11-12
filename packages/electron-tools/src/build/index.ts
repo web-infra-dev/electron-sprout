@@ -17,6 +17,7 @@ export const buildMainProcess = async (options: {
   compileOptions?: CompileOptions;
   externalDependencies?: Record<string, string>;
   ignoreDependencies?: string[];
+  extra?: string[];
   mainProcessFolder?: string; // main entrance path relative start folder
   exitWhenDone?: boolean; // exit process when done, default is true
 }) => {
@@ -27,6 +28,7 @@ export const buildMainProcess = async (options: {
     externalDependencies,
     ignoreDependencies,
     exitWhenDone,
+    extra,
     env,
   } = options;
   const { outDir } = getProjectInfo(options);
@@ -34,23 +36,27 @@ export const buildMainProcess = async (options: {
   await tscCode({
     mainProcessFolder,
     userProjectPath,
+    extra,
   });
 
   process.env = {
     ...process.env,
     ...env,
   };
-
   // compile
-  const result = await compileMainProcess({
+  const results = await compileMainProcess({
     ...options,
     outDir,
   });
-  if (result.code === 1) {
-    (result.messageDetails || []).map(console.log);
-    process.exitCode = 1;
-    throw Error('compile main process error');
-  }
+
+  results.forEach((each: { code: number; messageDetails: string[] }) => {
+    if (each.code === 1) {
+      (each.messageDetails || []).map(console.log);
+      process.exitCode = 1;
+      throw Error('compile main process error');
+    }
+  });
+
   // use uglifyjs
   // if is Js project, srcDir is origin folder: electron
   // if is Ts project, srcDir is dist folder of babel compile: dist/electron
@@ -58,8 +64,10 @@ export const buildMainProcess = async (options: {
     await uglify({
       srcDir: join(userProjectPath, outDir),
       ignore: compileOptions?.ignore || [],
+      extra,
     });
   }
+
   // create package.json of main process node_modules.
   createNodeModulesPkg({
     userProjectPath,

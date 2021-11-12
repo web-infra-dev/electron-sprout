@@ -8,5 +8,13 @@
     "import/no-dynamic-require": "off",
     "promise/prefer-await-to-then": "off",
     "no-alert": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": ["./tsconfig.json", "./electron/tsconfig.json"] // Specify it only for TypeScript files
+      }
+    }
+  ]
 }
