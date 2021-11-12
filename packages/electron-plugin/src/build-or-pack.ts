@@ -11,6 +11,7 @@ type BuildOptions = {
   electronMain?: boolean;
   electronApp?: boolean;
   development?: boolean;
+  extra?: string[];
   main?: string; // entry folder for main process
   ignore?: string;
 };
@@ -25,8 +26,9 @@ export const registerBuildMainCmd = (program: any) => {
       .option('-d, --development', 'build with NODE_ENV=development')
       .option(
         '-m, --main <main>',
-        'specify the entrance folder path of main process, such as: electron/',
+        'specify the entry folder path of main process, such as: electron/ (with tsconfig.json)',
       )
+      .option('-e, --extra <extra...>', 'specify extra folders to compile')
       // .option('-ea, --electron-app', 'pack electron app')
       .option('-i, --ignore <ignore>', 'ignore folder or file')
       .description('build electron main process')
@@ -97,6 +99,7 @@ export const registerBuildAppCmd = (program: any) => {
         'specify the entrance folder path of main process, such as: electron/',
       )
       .option('-i, --ignore <ignore>', 'ignore folder or file')
+      .option('-e, --extra <extra...>', 'specify extra folders to compile')
       .option('-en, --enableNode', 'enable use node in electron render')
       .description(
         'build electron all: render process、main process and electron app',
@@ -146,6 +149,7 @@ export const buildMainProcess = (
     compileOptions.ignore = options.ignore.split(',');
   }
   return doBuildMainProcess({
+    extra: options.extra,
     userProjectPath,
     exitWhenDone,
     env: processEnv,

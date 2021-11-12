@@ -38,8 +38,9 @@ program
   .option('-d, --development', 'build with NODE_ENV=development')
   .option(
     '-em, --main  <main>',
-    'specify the entrance folder path of main process, such as: electron/',
+    'specify the entry folder path of main process, such as: electron/ (with tsconfig.json)',
   )
+  .option('-e, --extra <extra...>', 'specify extra folders to compile')
   .option('-i, --ignore <ignore>', 'ignore folder or file')
   .description('build electron main process')
   .action(options => {

@@ -1,5 +1,6 @@
 import uglifyjs from 'uglify-js';
 import fs from 'fs-extra';
+import { dirname, join } from 'upath';
 import { findFiles } from '@/utils/find-files';
 
 export const findAllJs = (options: { srcDir: string; ignore: string[] }) => {
@@ -23,7 +24,7 @@ const doUglify = (file: string) =>
     });
   });
 
-export const uglify = (options: {
+export const uglifyDir = (options: {
   srcDir: string;
   ignore?: string[];
   parallel?: number;
@@ -54,4 +55,22 @@ export const uglify = (options: {
       reject(error);
     }
   });
+};
+
+export const uglify = (options: {
+  srcDir: string;
+  ignore?: string[];
+  parallel?: number;
+  extra?: string[];
+}) => {
+  const { extra = [], srcDir } = options;
+  const basePath = dirname(srcDir);
+  return Promise.all(
+    [...extra, srcDir].map(each =>
+      uglifyDir({
+        ...options,
+        srcDir: each === srcDir ? srcDir : join(basePath, each),
+      }),
+    ),
+  );
 };

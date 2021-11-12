@@ -9,7 +9,8 @@
     "dev": "FAST_REFRESH=false modern dev",
     "dev:main": "modern dev electron-main",
     "dev:electron": "modern dev electron",
-    "build:electron": "PLATFORM=mac modern build electron",
+    "build:electron": "PLATFORM=mac modern build electron --extra shared",
+    "build:main": "PLATFORM=mac modern build electron-main --extra shared",
     "build": "modern build",
     "start": "modern start",
     "preview": "modern deploy --mode preview",
@@ -49,6 +50,7 @@
     "@modern-js/electron-tools": "^1.0.0",
     "@modern-js/plugin-electron": "workspace:^1",
     "@modern-js/runtime": "^1",
+    "babel-plugin-module-resolver": "^4.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

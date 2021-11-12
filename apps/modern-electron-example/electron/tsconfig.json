@@ -5,7 +5,10 @@
     "baseUrl": ".",
     "rootDir": "..",
     "outDir": "../dist/electron",
+    "paths": {
+      "@shared/*": ["../shared/*"]
+    },
     "module": "CommonJS"
   },
-  "include": ["."]
+  "include": [".", "../shared"]
 }
