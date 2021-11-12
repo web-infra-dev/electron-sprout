@@ -17,6 +17,18 @@ module.exports = {
     },
   },
   electron: {
+    babel: defaultConfig => {
+      defaultConfig.plugins.push([
+        require.resolve('babel-plugin-module-resolver'),
+        {
+          root: ['./'],
+          alias: {
+            '@shared': './shared',
+          },
+        },
+      ]);
+      return defaultConfig;
+    },
     builder: {
       baseConfig: {
         appId: 'com.bytedance.demo',

@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { compiler } from '@modern-js/babel-compiler';
+import { dirname } from 'upath';
 import { babelConfig } from '../config';
 import { DEFAULT_ELECTRON_MAIN_FOLDER } from '../utils/paths';
 import { ENVS, ENV_NAME } from '@/utils';
@@ -19,6 +20,31 @@ export type CompileOptions = {
 const DEFAULT_IGNORE = ['**/tests/**/*', '**/*/*.dev.js'];
 
 export const compileMainProcess = (options: {
+  userProjectPath: string; // start folder
+  env: Record<string, string | undefined>;
+  compileOptions?: CompileOptions;
+  outDir: string;
+  extra?: string[];
+  mainProcessFolder?: string; // main entrance path relative start folder
+}) => {
+  const {
+    extra = [],
+    outDir,
+    mainProcessFolder = DEFAULT_ELECTRON_MAIN_FOLDER,
+  } = options;
+  return Promise.all(
+    [...extra, mainProcessFolder].map(each =>
+      doCompile({
+        ...options,
+        mainProcessFolder: each,
+        outDir:
+          each === mainProcessFolder ? outDir : join(dirname(outDir), each),
+      }),
+    ),
+  );
+};
+
+const doCompile = (options: {
   userProjectPath: string; // start folder
   env: Record<string, string | undefined>;
   compileOptions?: CompileOptions;
