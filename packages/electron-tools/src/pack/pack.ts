@@ -19,7 +19,7 @@ const getPackParams = (options: { version: string; platform: PLATFORM }) => {
     params.push('--win');
     params.push(isWin64 ? '--x64' : '--ia32');
   }
-  if (isLinux) {
+  if (isLinux || isLinuxArm64) {
     params.push('--linux');
     params.push('deb');
     params.push('tar.xz');
