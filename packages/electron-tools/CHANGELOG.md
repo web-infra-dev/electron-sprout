@@ -1,5 +1,13 @@
 # @modern-js/electron-tools
 
+## 2.0.3
+
+### Patch Changes
+
+- publish v2.0.3
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@2.0.3
+
 ## 2.0.2
 
 ### Patch Changes
