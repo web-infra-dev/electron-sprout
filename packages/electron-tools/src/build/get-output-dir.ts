@@ -30,7 +30,7 @@ export const getProjectInfo = (options: {
   if (!existsSync(userTsConfigFile)) {
     // it means js project, compile folder default is electron
     return {
-      outDir: DEFAULT_ELECTRON_MAIN_DIST_FOLDER,
+      outDir: DEFAULT_ELECTRON_MAIN_FOLDER,
       isTsProject: false,
     };
   }
