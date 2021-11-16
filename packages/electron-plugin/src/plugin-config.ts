@@ -25,6 +25,9 @@ export const pluginConfig = {
         win64Config: {
           type: 'object',
         },
+        linuxConfig: {
+          type: 'object',
+        },
       },
     },
   },
