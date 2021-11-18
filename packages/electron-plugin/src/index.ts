@@ -59,8 +59,9 @@ export default createPlugin(
           ...aliasConfig.config,
         };
       },
-      modifyEntryImports() {
+      modifyEntryImports(options: any) {
         handleExportUtils(exportsUtils);
+        return options;
       },
     };
   },
