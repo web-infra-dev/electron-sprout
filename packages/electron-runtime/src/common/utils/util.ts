@@ -1,6 +1,4 @@
-import mergeWith from 'lodash.mergeWith';
-import isArray from 'lodash.isArray';
-import cloneDeep from 'lodash.cloneDeep';
+import { mergeWith, isArray, cloneDeep } from 'lodash';
 import { readFileSync, existsSync } from 'fs-extra';
 import { parse as jsonParse } from 'json5';
 
