@@ -1,5 +1,4 @@
-import isArray from 'lodash.isArray';
-import mergeWith from 'lodash.mergeWith';
+import { isArray, mergeWith } from 'lodash';
 import { cliLog } from '@modern-js/electron-log';
 import { readConfig } from '../config';
 import { baseConfig } from './builder.base.config';
