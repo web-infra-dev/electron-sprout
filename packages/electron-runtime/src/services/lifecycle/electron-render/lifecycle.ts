@@ -1,6 +1,7 @@
 import { Client } from '../../../core/base/parts/ipc/electron-browser/ipc.electron-browser';
 import { IChannel } from '../../../core/base/parts/ipc/common/ipc';
 import { ILifecycleService } from '../common/lifecycle';
+import { IPC_CHANNELS } from '@/common/constants/ipc';
 
 export class LifecycleService implements ILifecycleService {
   private readonly mainProcessConnection: Client;
@@ -9,7 +10,7 @@ export class LifecycleService implements ILifecycleService {
 
   constructor(mainProcessConnection: Client) {
     this.mainProcessConnection = mainProcessConnection;
-    this.channel = this.getChannel('lifeCycle');
+    this.channel = this.getChannel(IPC_CHANNELS.LIFECYCLE);
   }
 
   quit(): Promise<boolean> {
