@@ -1,5 +1,6 @@
 import { join } from 'path';
 import spawn from 'cross-spawn';
+import { getElectronBuilderBin } from '@/utils';
 
 export type PLATFORM = 'mac' | 'win32' | 'win64' | 'linux' | 'linuxArm64';
 
@@ -34,7 +35,7 @@ const doPack = (options: {
   version: string;
 }) => {
   const { userProjectPath, env, version, platform } = options;
-  const electronBuilderBin = require.resolve('electron-builder/cli.js');
+  const electronBuilderBin = getElectronBuilderBin();
   const exec = spawn(electronBuilderBin, getPackParams({ version, platform }), {
     cwd: userProjectPath,
     env: {
