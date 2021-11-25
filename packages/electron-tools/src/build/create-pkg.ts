@@ -91,12 +91,12 @@ export const createNodeModulesPkg = (options: {
   });
 
   // create package.json for main process.
-  const pkgFolder = dirname(APP_PACKAGE_JSON_FILE_PATH);
+  const distPackagejson = getDistPackageJsonPath(userProjectPath);
+  const pkgFolder = dirname(distPackagejson);
   if (!existsSync(pkgFolder)) {
     mkdirpSync(pkgFolder);
   }
 
-  const distPackagejson = getDistPackageJsonPath(userProjectPath);
   cliLog.info('distPackagejson:', distPackagejson);
   writeJsonSync(
     distPackagejson,
