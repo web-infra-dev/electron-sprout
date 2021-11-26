@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 2.0.6
+
+### Patch Changes
+
+- publish 2.0.6
+
 ## 2.0.5
 
 ### Patch Changes
