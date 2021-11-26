@@ -113,9 +113,10 @@ export function createChannelSender<T>(
       get(_target: T, propKey: PropertyKey) {
         if (typeof propKey === 'string') {
           // Event
-          if (propertyIsEvent(propKey)) {
-            return channel.listen(propKey);
-          }
+          // this will effect services which can't use name startWithOn
+          // if (propertyIsEvent(propKey)) {
+          //   return channel.listen(propKey);
+          // }
 
           // Function
           return async function (...args: any[]) {

@@ -63,6 +63,8 @@ program
       env: processEnv,
       compileOptions,
       mainProcessFolder: options.main,
+      extra: options.extra,
+      ignore: options.ignore,
     });
   });
 

@@ -5,7 +5,7 @@ import { join, dirname } from 'path';
 import { existsSync } from 'fs-extra';
 import { getArchAndPlatform } from '../utils/platform';
 import { spawnPromise } from '../utils/spawn';
-import { YARN_BIN } from '../utils/bins';
+import { getElectronBuilderBin, YARN_BIN } from '../utils/bins';
 import { ENV_NAME } from '@/utils';
 
 export const installDep = (compileFolder: string, installCmd?: string) => {
@@ -28,7 +28,7 @@ export const installDep = (compileFolder: string, installCmd?: string) => {
 };
 
 export const compileDep = (compileFolder: string) => {
-  const electronBuilderBin = require.resolve('electron-builder/cli.js');
+  const electronBuilderBin = getElectronBuilderBin();
   const pcInfo = getArchAndPlatform();
   return spawnPromise({
     cmd: electronBuilderBin,
