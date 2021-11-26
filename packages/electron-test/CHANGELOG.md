@@ -1,5 +1,14 @@
 # @modern-js/electron-test
 
+## 1.0.8
+
+### Patch Changes
+
+- publish v1.0.8
+- Updated dependencies [undefined]
+  - @modern-js/electron-runtime@1.0.8
+  - @modern-js/electron-tools@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes
