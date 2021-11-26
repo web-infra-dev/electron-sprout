@@ -10,6 +10,7 @@
     "no-new": "off",
     "no-console": "off",
     "filenames/match-exported": "off",
-    "no-process-exit": "off"
+    "no-process-exit": "off",
+    "import/no-commonjs": "off"
   }
 }

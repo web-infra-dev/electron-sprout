@@ -15,6 +15,7 @@
     "@typescript-eslint/prefer-optional-chain": "off",
     // want to use promise
     "promise/prefer-await-to-then": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "@typescript-eslint/naming-convention": "off",
+    "import/no-commonjs": "off"
   }
 }
