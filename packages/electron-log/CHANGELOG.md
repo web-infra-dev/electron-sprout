@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 1.0.9
+
+### Patch Changes
+
+- publish v1.0.9 support for webpack 4 import
+
 ## 1.0.8
 
 ### Patch Changes
