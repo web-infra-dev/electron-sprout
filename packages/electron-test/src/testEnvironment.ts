@@ -1,5 +1,5 @@
 import NodeEnvironment from 'jest-environment-node';
-import TestDriver from '.';
+import TestDriver from './testDriver';
 
 class TestEnvironment extends NodeEnvironment {
   async setup() {
