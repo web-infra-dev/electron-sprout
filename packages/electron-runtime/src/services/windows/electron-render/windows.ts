@@ -1,7 +1,10 @@
 import { ipcRenderer } from 'electron';
 import { renderLog } from '@modern-js/electron-log';
 import { Disposable, IDisposable } from '../../../core/base/common/lifecycle';
-import { IChannel } from '../../../core/base/parts/ipc/common/ipc';
+import {
+  IChannel,
+  ICustomServerChannel,
+} from '../../../core/base/parts/ipc/common/ipc';
 import { Client } from '../../../core/base/parts/ipc/electron-browser/ipc.electron-browser';
 import { Event, Emitter } from '../../../core/base/common/event';
 import { isThenable } from '../../../core/base/common/async';
@@ -183,18 +186,23 @@ export class WindowsService extends Disposable implements IWindowsService {
   }
 
   registerServices(service: { [key: string]: unknown }) {
+    const channelName = getIpcChannelName({
+      target: CONNECTION_TARGET.BROWSER_WINDOW,
+      targetId: `${this.windowId || ''}`,
+    });
     if (!this.registered) {
       this.registered = true;
       const channel = createCustomChannelReceiver(service);
-      this.mainProcessConnection.registerChannel(
-        getIpcChannelName({
-          target: CONNECTION_TARGET.BROWSER_WINDOW,
-          targetId: `${this.windowId || ''}`,
-        }),
-        channel,
-      );
+      this.mainProcessConnection.registerChannel(channelName, channel);
     } else {
-      renderLog.info('services have been registered, do not regist again!');
+      const channel =
+        this.mainProcessConnection.getServerChannel<ICustomServerChannel>(
+          channelName,
+        );
+      if (!channel) {
+        renderLog.info('services have been registered, do not regist again!');
+      }
+      channel?.updateServices(service);
     }
   }
 
