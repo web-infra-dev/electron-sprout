@@ -14,6 +14,7 @@ module.exports = {
         p[0].includes('@babel/preset-typescript'),
       )[0];
       preset[1].onlyRemoveTypeImports = true;
+      preset[1].isTSX = false;
     },
   },
 };
