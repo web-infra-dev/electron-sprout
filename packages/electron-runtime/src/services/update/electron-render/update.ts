@@ -23,7 +23,7 @@ export class UpdateService implements IUpdateService {
   }
 
   checkUpdate(options: UpdateOption) {
-    return this.channel.call('checkForUpdates', options);
+    return this.channel.call('checkForUpdates', [options]);
   }
 
   onUpdateProgress(

@@ -28,8 +28,8 @@ export class LifecycleService implements ILifecycleService {
     return this.channel.call('relaunch', [options]);
   }
 
-  call(funcName: string, ...args: any): Promise<any> {
-    return this.channel.call(funcName, ...args);
+  call(funcName: string, ...args: any[]): Promise<any> {
+    return this.channel.call(funcName, args);
   }
 
   private getChannel(channelName: string): IChannel {
