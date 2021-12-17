@@ -1,5 +1,14 @@
 # @modern-js/electron-test
 
+## 1.0.11
+
+### Patch Changes
+
+- publish v1.0.11 for updateService.checkForUpdate api
+- Updated dependencies [undefined]
+  - @modern-js/electron-runtime@1.0.11
+  - @modern-js/electron-tools@1.0.11
+
 ## 1.0.10
 
 ### Patch Changes
