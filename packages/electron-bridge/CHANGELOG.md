@@ -1,5 +1,18 @@
 # @modern-js/electron-bridge
 
+## 2.0.7
+
+### Patch Changes
+
+- publish for v2.0.7
+- publish v2.0.7 for updateService.checkForUpdate
+
+## 2.0.6
+
+### Patch Changes
+
+- publish for v2.0.6
+
 ## 2.0.5
 
 ### Patch Changes
