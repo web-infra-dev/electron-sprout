@@ -43,4 +43,5 @@ export interface IWindowsService {
     channel: string,
     ...args: any[]
   ): Promise<any>;
+  windowId: number;
 }
