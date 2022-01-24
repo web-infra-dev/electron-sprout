@@ -1,5 +1,13 @@
 # @modern-js/electron-runtime
 
+## 2.0.8
+
+### Patch Changes
+
+- publish 2.0.8 for winservice.windowId
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@2.0.8
+
 ## 2.0.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 2.0.8
+
+### Patch Changes
+
+- publish 2.0.8 for winservice.windowId
+
 ## 2.0.5
 
 ### Patch Changes
