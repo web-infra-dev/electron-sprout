@@ -58,6 +58,11 @@
       "packages/*"
     ]
   },
+  "pnpm": {
+    "overrides": {
+      "@modern-js/babel-preset-module": "1.1.1"
+    }
+  },
   "devDependencies": {
     "@modern-js/monorepo-tools": "^1.0.0",
     "@modern-js/plugin-jarvis": "^1.0.0",
