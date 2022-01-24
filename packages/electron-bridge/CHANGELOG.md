@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 1.0.12
+
+### Patch Changes
+
+- publish v1.0.12 for adding winservice.windowId api
+
 ## 1.0.11
 
 ### Patch Changes
