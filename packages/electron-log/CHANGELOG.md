@@ -1,17 +1,10 @@
 # @modern-js/electron-log
 
-## 2.0.7
+## 2.0.8
 
 ### Patch Changes
 
-- publish for v2.0.7
-- publish v2.0.7 for updateService.checkForUpdate
-
-## 2.0.6
-
-### Patch Changes
-
-- publish for v2.0.6
+- publish 2.0.8 for winservice.windowId
 
 ## 2.0.5
 

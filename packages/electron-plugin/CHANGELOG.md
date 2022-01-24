@@ -1,30 +1,16 @@
 # @modern-js/plugin-electron
 
-## 2.0.7
+## 2.0.8
 
 ### Patch Changes
 
-- publish for v2.0.7
-- publish v2.0.7 for updateService.checkForUpdate
+- publish 2.0.8 for winservice.windowId
 - Updated dependencies [undefined]
-- Updated dependencies [undefined]
-  - @modern-js/electron-bridge@2.0.7
-  - @modern-js/electron-log@2.0.7
-  - @modern-js/electron-runtime@2.0.7
-  - @modern-js/electron-test@2.0.7
-  - @modern-js/electron-tools@2.0.7
-
-## 2.0.6
-
-### Patch Changes
-
-- publish for v2.0.6
-- Updated dependencies [undefined]
-  - @modern-js/electron-bridge@2.0.6
-  - @modern-js/electron-log@2.0.6
-  - @modern-js/electron-runtime@2.0.6
-  - @modern-js/electron-test@2.0.6
-  - @modern-js/electron-tools@2.0.6
+  - @modern-js/electron-bridge@2.0.8
+  - @modern-js/electron-log@2.0.8
+  - @modern-js/electron-runtime@2.0.8
+  - @modern-js/electron-test@2.0.8
+  - @modern-js/electron-tools@2.0.8
 
 ## 2.0.5
 
