@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 1.0.13
+
+### Patch Changes
+
+- publish v1.0.13 to fix compile problems
+
 ## 1.0.12
 
 ### Patch Changes
