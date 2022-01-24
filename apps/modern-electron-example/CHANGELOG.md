@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.9
+
+### Patch Changes
+
+- publish v1.0.12 for adding winservice.windowId api
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.12
+  - @modern-js/plugin-electron@1.0.12
+  - @modern-js/electron-tools@1.0.12
+
 ## 1.0.8
 
 ### Patch Changes
