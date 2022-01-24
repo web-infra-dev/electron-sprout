@@ -3,6 +3,7 @@ import { Event, IDisposable, CloseReason, CloseMode } from '@/common';
 import { winService as service } from '@/services/index.render';
 
 export const winService = {
+  windowId: service.windowId,
   disposeWebviewConnection(webviewIds: number[]) {
     return service.disposeWebviewConnection(webviewIds);
   },
