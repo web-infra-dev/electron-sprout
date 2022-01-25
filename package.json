@@ -70,6 +70,7 @@
     "json5": "^2.2.0"
   },
   "dependencies": {
-    "electron": "13.1.9"
+    "electron": "^14.0.0",
+    "electron-updater": "4.3.9"
   }
 }
