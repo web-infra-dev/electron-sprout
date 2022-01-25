@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.9
+
+### Patch Changes
+
+- publish v2.0.10 to set electron-updater as peerDep
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@2.0.10
+  - @modern-js/plugin-electron@2.0.10
+  - @modern-js/electron-tools@2.0.10
+
 ## 1.0.8
 
 ### Patch Changes

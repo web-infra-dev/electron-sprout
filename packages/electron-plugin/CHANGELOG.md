@@ -1,5 +1,17 @@
 # @modern-js/plugin-electron
 
+## 2.0.10
+
+### Patch Changes
+
+- publish v2.0.10 to set electron-updater as peerDep
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@2.0.10
+  - @modern-js/electron-log@2.0.10
+  - @modern-js/electron-runtime@2.0.10
+  - @modern-js/electron-test@2.0.10
+  - @modern-js/electron-tools@2.0.10
+
 ## 2.0.9
 
 ### Patch Changes

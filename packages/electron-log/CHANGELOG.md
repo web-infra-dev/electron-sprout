@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 2.0.10
+
+### Patch Changes
+
+- publish v2.0.10 to set electron-updater as peerDep
+
 ## 2.0.9
 
 ### Patch Changes
