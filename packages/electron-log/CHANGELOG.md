@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 1.0.14
+
+### Patch Changes
+
+- publish v1.0.14 to fix electron-updater problem
+
 ## 1.0.13
 
 ### Patch Changes
