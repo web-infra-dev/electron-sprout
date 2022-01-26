@@ -1,5 +1,14 @@
 # @modern-js/electron-test
 
+## 1.0.14
+
+### Patch Changes
+
+- publish v1.0.14 to fix electron-updater problem
+- Updated dependencies [undefined]
+  - @modern-js/electron-runtime@1.0.14
+  - @modern-js/electron-tools@1.0.14
+
 ## 1.0.13
 
 ### Patch Changes
