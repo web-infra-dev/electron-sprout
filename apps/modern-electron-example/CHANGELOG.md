@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.12
+
+### Patch Changes
+
+- publish 1.0.15 for jupiter plugin
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.15
+  - @modern-js/plugin-electron@1.0.15
+  - @modern-js/electron-tools@1.0.15
+
 ## 1.0.11
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 1.0.15
+
+### Patch Changes
+
+- publish 1.0.15 for jupiter plugin
+
 ## 1.0.14
 
 ### Patch Changes
