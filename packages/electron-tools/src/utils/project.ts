@@ -7,7 +7,11 @@ export const isModernJsMWA = (cwd: string) => {
     return false;
   }
   const pkg = readJSONSync(pkgPath, { encoding: 'utf8' });
-  return Boolean(pkg.devDependencies['@modern-js/app-tools']);
+  // support jupiter
+  return (
+    Boolean(pkg.devDependencies['@modern-js/app-tools']) ||
+    Boolean(pkg.devDependencies['@jupiter/app-tools'])
+  );
 };
 
 export const isTsProject = (cwd: string) => {
