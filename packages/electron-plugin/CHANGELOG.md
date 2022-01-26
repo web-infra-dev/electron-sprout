@@ -1,5 +1,17 @@
 # @modern-js/plugin-electron
 
+## 1.0.15
+
+### Patch Changes
+
+- publish 1.0.15 for jupiter plugin
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.15
+  - @modern-js/electron-log@1.0.15
+  - @modern-js/electron-runtime@1.0.15
+  - @modern-js/electron-test@1.0.15
+  - @modern-js/electron-tools@1.0.15
+
 ## 1.0.14
 
 ### Patch Changes
