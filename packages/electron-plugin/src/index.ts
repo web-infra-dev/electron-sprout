@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { createPlugin, useAppContext } from '@modern-js/core';
+import type { CliPlugin } from '@modern-js/core';
 import {
   registerBuildAppCmd,
   registerBuildRendererCmd,
@@ -18,8 +17,9 @@ import { getBuildMode, getConfigByBuildMode } from './get-config-by-build-mode';
 import { ExportsUtils, getImportAlias } from './get-import-alias';
 import { pluginConfig } from './plugin-config';
 
-export default createPlugin(
-  () => {
+export default (): CliPlugin => ({
+  name: '@modern-js/plugin-electron',
+  setup: api => {
     let exportsUtils: ExportsUtils | null = null;
     return {
       commands({ program }) {
@@ -50,7 +50,7 @@ export default createPlugin(
       config() {
         // config is running before command, so need to set BUILD_MODE here
         process.env[ENVS.BUILD_MODE] = getBuildMode();
-        const appContext = useAppContext();
+        const appContext = api.useAppContext();
         const buildConfig = getConfigByBuildMode(appContext) || {};
         const aliasConfig = getImportAlias(appContext);
         exportsUtils = aliasConfig.utils;
@@ -65,7 +65,4 @@ export default createPlugin(
       },
     };
   },
-  {
-    name: '@modern-js/plugin-electron',
-  },
-);
+});
