@@ -65,12 +65,12 @@
     "fs-extra": "^10.0.0"
   },
   "peerDependencies": {
-    "@modern-js/core": "^1.0.0",
     "@modern-js/app-tools": ">=0.1.9",
+    "@modern-js/core": "^1.5.0",
     "@modern-js/electron-runtime": "workspace:^2.0.10"
   },
   "devDependencies": {
-    "@modern-js/core": "^1.0.0",
+    "@modern-js/core": "^1.5.0",
     "@modern-js/module-tools": "^1.0.0",
     "@modern-js/plugin-testing": "^1.0.0",
     "@types/cross-spawn": "^6.0.2",
