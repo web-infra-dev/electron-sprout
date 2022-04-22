@@ -1,5 +1,14 @@
 # @modern-js/electron-test
 
+## 2.0.11
+
+### Patch Changes
+
+- publish v2.0.11 for sync shell env
+- Updated dependencies [undefined]
+  - @modern-js/electron-runtime@2.0.11
+  - @modern-js/electron-tools@2.0.11
+
 ## 2.0.10
 
 ### Patch Changes
