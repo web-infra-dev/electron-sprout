@@ -1,5 +1,13 @@
 # @modern-js/electron-runtime
 
+## 1.0.17
+
+### Patch Changes
+
+- publish v1.0.17 for fix compile error and syncshellenv
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@1.0.17
+
 ## 1.0.16
 
 ### Patch Changes

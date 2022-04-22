@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.14
+
+### Patch Changes
+
+- publish v1.0.17 for fix compile error and syncshellenv
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.17
+  - @modern-js/plugin-electron@1.0.17
+  - @modern-js/electron-tools@1.0.17
+
 ## 1.0.13
 
 ### Patch Changes
