@@ -20,10 +20,10 @@ class ElectronRuntime {
   private syncShellEnv: boolean = true; // 默认为 true
 
   constructor(private readonly options: IStartOption) {
-    this.initEnvs();
     this.syncShellEnv = _.has(options, 'syncShellEnv')
       ? (options.syncShellEnv as boolean)
       : true;
+    this.initEnvs();
   }
 
   /**
