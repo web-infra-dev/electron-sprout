@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 1.0.16
+
+### Patch Changes
+
+- change shell env for optional
+
 ## 1.0.15
 
 ### Patch Changes
