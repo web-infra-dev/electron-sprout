@@ -1,5 +1,13 @@
 # @modern-js/electron-tools
 
+## 2.0.12
+
+### Patch Changes
+
+- publish v2.0.12 for fix sync shell env
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@2.0.12
+
 ## 2.0.11
 
 ### Patch Changes

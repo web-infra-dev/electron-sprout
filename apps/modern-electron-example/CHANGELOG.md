@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.11
+
+### Patch Changes
+
+- publish v2.0.12 for fix sync shell env
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@2.0.12
+  - @modern-js/plugin-electron@2.0.12
+  - @modern-js/electron-tools@2.0.12
+
 ## 1.0.10
 
 ### Patch Changes
