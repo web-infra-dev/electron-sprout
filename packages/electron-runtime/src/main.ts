@@ -1,4 +1,5 @@
 import { mainLog } from '@modern-js/electron-log';
+import _ from 'lodash';
 import { app, Menu } from 'electron';
 import { initRemote } from './common/utils/initRemote';
 import { Application } from './application';
@@ -16,8 +17,13 @@ import { ILifecycleMainService } from './services/lifecycle/common/lifecycle';
 import { LifecycleService } from './services/lifecycle/electron-main/lifecycle';
 
 class ElectronRuntime {
+  private syncShellEnv: boolean = true; // 默认为 true
+
   constructor(private readonly options: IStartOption) {
     this.initEnvs();
+    this.syncShellEnv = _.has(options, 'syncShellEnv')
+      ? (options.syncShellEnv as boolean)
+      : true;
   }
 
   /**
@@ -41,7 +47,9 @@ class ElectronRuntime {
   private initEnvironment() {
     initRemote();
     configureCommandlineSwitche();
-    fixEnvsInMainProcess();
+    if (this.syncShellEnv) {
+      fixEnvsInMainProcess();
+    }
   }
 
   private installExtensions() {
