@@ -1,5 +1,4 @@
 import type { Configuration } from 'webpack';
-import type Chain from 'webpack-chain';
 import type { IAppContext } from '@modern-js/core';
 import { BUILD_MODE, ENV_NAME } from './constant';
 
@@ -44,7 +43,7 @@ export const getConfigByBuildMode = (appContext: IAppContext) => {
           disableNodePolyfill: true,
         },
         tools: {
-          webpack: (_config: Configuration, { chain }: { chain: Chain }) => {
+          webpack: (_config: Configuration, { chain }: any) => {
             chain.target('electron-renderer');
             chain.node.set('__dirname', false);
             chain.node.set('__filename', false);
