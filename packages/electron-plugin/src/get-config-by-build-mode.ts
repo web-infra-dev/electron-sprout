@@ -44,7 +44,7 @@ export const getConfigByBuildMode = (appContext: IAppContext) => {
           disableNodePolyfill: true,
         },
         tools: {
-          webpack: (_config: Configuration, { chain }: { chain: Chain }) => {
+          webpack: (_config: Configuration, { chain }: any) => {
             chain.target('electron-renderer');
             chain.node.set('__dirname', false);
             chain.node.set('__filename', false);

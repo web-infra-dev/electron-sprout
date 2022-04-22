@@ -2,7 +2,7 @@
   "folders": [
     {
       "name": "electron-plugin",
-      "path": "packages/plugin-electron/"
+      "path": "packages/electron-plugin/"
     },
     {
       "name": "electron-tools",
