@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 1.0.16
+
+### Patch Changes
+
+- change shell env for optional
+
 ## 1.0.15
 
 ### Patch Changes

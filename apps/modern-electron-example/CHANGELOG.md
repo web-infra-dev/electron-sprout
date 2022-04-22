@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.13
+
+### Patch Changes
+
+- change shell env for optional
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.16
+  - @modern-js/plugin-electron@1.0.16
+  - @modern-js/electron-tools@1.0.16
+
 ## 1.0.12
 
 ### Patch Changes
