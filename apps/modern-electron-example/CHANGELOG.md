@@ -1,5 +1,15 @@
 # modern-electron-example
 
+## 1.0.15
+
+### Patch Changes
+
+- publish v1.0.18 for fix dot version
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@1.0.18
+  - @modern-js/plugin-electron@1.0.18
+  - @modern-js/electron-tools@1.0.18
+
 ## 1.0.14
 
 ### Patch Changes
