@@ -19,9 +19,14 @@ import { LifecycleService } from './services/lifecycle/electron-main/lifecycle';
 class ElectronRuntime {
   private syncShellEnv: boolean = true; // 默认为 true
 
+  private fixDotNetVersion: boolean = true;
+
   constructor(private readonly options: IStartOption) {
     this.syncShellEnv = _.has(options, 'syncShellEnv')
       ? (options.syncShellEnv as boolean)
+      : true;
+    this.fixDotNetVersion = _.has(options, 'fixDotNetVersion')
+      ? (options.fixDotNetVersion as boolean)
       : true;
     this.initEnvs();
   }
@@ -31,7 +36,9 @@ class ElectronRuntime {
    * such as fix .net version bug.
    */
   private initEnvs() {
-    fixDotNetVersionBug();
+    if (this.fixDotNetVersion) {
+      fixDotNetVersionBug();
+    }
     this.initEnvironment();
   }
 
