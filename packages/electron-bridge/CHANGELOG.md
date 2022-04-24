@@ -1,5 +1,11 @@
 # @modern-js/electron-bridge
 
+## 2.0.13
+
+### Patch Changes
+
+- publish v2.0.13 for fix dot version
+
 ## 2.0.12
 
 ### Patch Changes

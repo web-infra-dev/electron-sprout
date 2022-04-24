@@ -1,5 +1,14 @@
 # @modern-js/electron-test
 
+## 2.0.13
+
+### Patch Changes
+
+- publish v2.0.13 for fix dot version
+- Updated dependencies [undefined]
+  - @modern-js/electron-runtime@2.0.13
+  - @modern-js/electron-tools@2.0.13
+
 ## 2.0.12
 
 ### Patch Changes
