@@ -1,5 +1,13 @@
 # @modern-js/electron-runtime
 
+## 1.0.19
+
+### Patch Changes
+
+- publish v1.0.19 for cycle import
+- Updated dependencies [undefined]
+  - @modern-js/electron-log@1.0.19
+
 ## 1.0.18
 
 ### Patch Changes
