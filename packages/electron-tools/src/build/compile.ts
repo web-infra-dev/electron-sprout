@@ -80,11 +80,7 @@ const doCompile = (options: {
 
   compileOptions.ignore = compileOptions.ignore || [];
   compileOptions.ignore = compileOptions.ignore.concat(DEFAULT_IGNORE);
-
-  console.log('compile options:', compileOptions, {
-    ...babelConfig,
-    minified: getMinified(),
-  });
+  babelConfig.sourceMaps = compileOptions.sourceMaps;
   return compiler(
     { ...defaultCompileOptions, ...compileOptions },
     {

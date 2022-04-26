@@ -8,11 +8,10 @@ import { Graph } from './graph';
 import {
   IInstantiationService,
   ServicesAccessor,
-  ServiceIdentifier,
   serviceIdManager,
 } from './instantiation';
 import { SyncDescriptor } from './descriptors';
-import { ServiceCollection } from './serviceCollection';
+import { ServiceCollection, ServiceIdentifier } from './serviceCollection';
 
 class CyclicDependencyError extends Error {
   constructor(graph: Graph<any>) {
