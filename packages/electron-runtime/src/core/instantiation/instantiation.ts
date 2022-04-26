@@ -3,12 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { SyncDescriptor0, SyncDescriptor1 } from './descriptors';
-import { ServiceCollection } from './serviceCollection';
-
-export interface ServiceIdentifier<T> {
-  (...args: any[]): void;
-  type: T;
-}
+import { ServiceCollection, ServiceIdentifier } from './serviceCollection';
 
 export namespace serviceIdManager {
   export const serviceIds = new Map<string, ServiceIdentifier<any>>();
@@ -85,7 +80,7 @@ type GetLeadingNonServiceArgs<Args> = Args extends [...BrandedService[]]
       infer A3,
       infer A4,
       infer A5,
-      ...BrandedService[]
+      ...BrandedService[],
     ]
   ? [A1, A2, A3, A4, A5]
   : Args extends [
@@ -95,7 +90,7 @@ type GetLeadingNonServiceArgs<Args> = Args extends [...BrandedService[]]
       infer A4,
       infer A5,
       infer A6,
-      ...BrandedService[]
+      ...BrandedService[],
     ]
   ? [A1, A2, A3, A4, A5, A6]
   : Args extends [
@@ -106,7 +101,7 @@ type GetLeadingNonServiceArgs<Args> = Args extends [...BrandedService[]]
       infer A5,
       infer A6,
       infer A7,
-      ...BrandedService[]
+      ...BrandedService[],
     ]
   ? [A1, A2, A3, A4, A5, A6, A7]
   : Args extends [
@@ -118,7 +113,7 @@ type GetLeadingNonServiceArgs<Args> = Args extends [...BrandedService[]]
       infer A6,
       infer A7,
       infer A8,
-      ...BrandedService[]
+      ...BrandedService[],
     ]
   ? [A1, A2, A3, A4, A5, A6, A7, A8]
   : never;

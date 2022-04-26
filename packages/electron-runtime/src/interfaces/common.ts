@@ -3,7 +3,7 @@ import { IWindow, WindowConfig } from '../services/windows/common/windows';
 export type { IWindow };
 
 export type IWindowsBaseConfig = {
-  devBaseUrl?: (winName: string) => string; // dev default loadUrl, default is http://localhost:8080
+  devBaseUrl?: (winName: string) => string; // dev default loadUrl, default is http://localhost:8080shi
   prodBaseUrl?: (winName: string) => string; // prod default loadUrl，default is html/${winName}/index.html
 };
 export interface IStartOption {

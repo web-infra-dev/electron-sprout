@@ -3,7 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { SyncDescriptor } from './descriptors';
-import { ServiceIdentifier, IConstructorSignature0 } from './instantiation';
+import { IConstructorSignature0 } from './instantiation';
+import { ServiceIdentifier } from './serviceCollection';
 
 const _registry: Array<[ServiceIdentifier<any>, SyncDescriptor<any>]> = [];
 
