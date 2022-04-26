@@ -1,5 +1,17 @@
 # @modern-js/plugin-electron
 
+## 2.0.14
+
+### Patch Changes
+
+- publish v2.0.14 for cycle import
+- Updated dependencies [undefined]
+  - @modern-js/electron-bridge@2.0.14
+  - @modern-js/electron-log@2.0.14
+  - @modern-js/electron-runtime@2.0.14
+  - @modern-js/electron-test@2.0.14
+  - @modern-js/electron-tools@2.0.14
+
 ## 2.0.13
 
 ### Patch Changes

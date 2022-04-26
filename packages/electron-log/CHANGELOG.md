@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 2.0.14
+
+### Patch Changes
+
+- publish v2.0.14 for cycle import
+
 ## 2.0.13
 
 ### Patch Changes
