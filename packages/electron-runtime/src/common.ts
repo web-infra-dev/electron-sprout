@@ -5,7 +5,7 @@ import type {
   LifecycleService,
 } from './preload/index.render';
 
-import { Event } from '@/common';
+import { Event } from './core/base/common/event';
 
 export * from './interfaces/common';
 export type { WindowConfig } from './services/windows/common/windows';

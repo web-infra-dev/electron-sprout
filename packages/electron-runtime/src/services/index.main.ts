@@ -1,7 +1,5 @@
-import {
-  IInstantiationService,
-  ServiceIdentifier,
-} from '../core/instantiation/instantiation';
+import { ServiceIdentifier } from '../core/instantiation/serviceCollection';
+import { IInstantiationService } from '../core/instantiation/instantiation';
 import { ILifecycleMainService } from './lifecycle/common/lifecycle';
 import { IUpdateService } from './update/common/update';
 import { IWindowsMainService } from './windows/common/windows';
