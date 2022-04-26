@@ -2,8 +2,12 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { ServiceIdentifier } from './instantiation';
 import { SyncDescriptor } from './descriptors';
+
+export interface ServiceIdentifier<T> {
+  (...args: any[]): void;
+  type: T;
+}
 
 export class ServiceCollection {
   private readonly _entries: Map<ServiceIdentifier<any>, any> = new Map<
