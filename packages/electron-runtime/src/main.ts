@@ -1,7 +1,6 @@
 import { mainLog } from '@modern-js/electron-log';
 import _ from 'lodash';
 import { app, Menu } from 'electron';
-import { initRemote } from './common/utils/initRemote';
 import { Application } from './application';
 import { IS_DEV } from './common/constants/constants';
 import { handleWindowConfig } from './common/user-config';
@@ -52,7 +51,6 @@ class ElectronRuntime {
   }
 
   private initEnvironment() {
-    initRemote();
     configureCommandlineSwitche();
     if (this.syncShellEnv) {
       fixEnvsInMainProcess();

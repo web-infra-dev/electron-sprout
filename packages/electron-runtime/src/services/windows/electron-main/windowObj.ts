@@ -41,18 +41,18 @@ export class WindowObj extends Disposable implements IWindow {
     }
   }
 
-  sendWhenReady(channel: string, ...args: any[]): void {
+  sendWhenReady(channel: string, args: any): void {
     if (this.isReady) {
-      this.send(channel, ...args);
+      this.send(channel, args);
     } else {
-      this.ready().then(() => this.send(channel, ...args));
+      this.ready().then(() => this.send(channel, args));
     }
   }
 
-  send(channel: string, ...args: any[]): void {
+  send(channel: string, args: any): void {
     if (this._win) {
       try {
-        this._win.webContents.send(channel, ...args);
+        this._win.webContents.send(channel, args);
       } catch (error) {
         mainLog.info('window has been destroyed:', error);
       }
@@ -155,10 +155,6 @@ export class WindowObj extends Disposable implements IWindow {
     this._win = new BrowserWindow(
       mergeObj(DEFAULT_WINDOW_CONFIG, options || {}),
     );
-
-    global.electronCoreObj = {
-      appRoot: APP_ROOT,
-    };
 
     if (loadUrl && !disableAutoLoad) {
       this._win?.loadURL(this.getUrl(this.config));

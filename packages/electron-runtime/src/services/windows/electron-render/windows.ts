@@ -1,10 +1,7 @@
 import { ipcRenderer } from 'electron';
 import { renderLog } from '@modern-js/electron-log';
 import { Disposable, IDisposable } from '../../../core/base/common/lifecycle';
-import {
-  IChannel,
-  ICustomServerChannel,
-} from '../../../core/base/parts/ipc/common/ipc';
+import { IChannel } from '../../../core/base/parts/ipc/common/ipc';
 import { Client } from '../../../core/base/parts/ipc/electron-browser/ipc.electron-browser';
 import { Event, Emitter } from '../../../core/base/common/event';
 import { isThenable } from '../../../core/base/common/async';
@@ -16,26 +13,18 @@ import {
 
 import { handleVetos } from '../../lifecycle/common/utils';
 import { CloseMode, IWindowsService } from './IWindows';
-import { getIpcChannelName, CONNECTION_TARGET } from '@/common/utils/ipc';
-import { createCustomChannelReceiver } from '@/services/utils';
+import { CONNECTION_TARGET } from '@/common/utils/ipc';
+import { IPC_EVENTS } from '@/common/constants/events';
+import { createChannelReceiver } from '@/core/base/parts/ipc/node/ipc';
 
 const WINDOWS_MANAGER_NAME = 'windowsManager';
 
-interface MainProcessBroadCastEvent {
-  channel: string;
-  data: any;
-}
 export class WindowsService extends Disposable implements IWindowsService {
   protected readonly mainProcessConnection: Client;
 
   private readonly windowsManagerChannel: IChannel;
 
-  private registered = false; // services registered status
-
   private readonly _windowId: number;
-
-  protected readonly _onMainProcessBroadCast: Emitter<MainProcessBroadCastEvent> =
-    this._register(new Emitter<MainProcessBroadCastEvent>());
 
   protected readonly _onWillColse: Emitter<WillCloseEvent> = this._register(
     new Emitter<WillCloseEvent>(),
@@ -49,13 +38,15 @@ export class WindowsService extends Disposable implements IWindowsService {
 
   private readonly onBeforeClose = this._onBeforeClose.event;
 
-  constructor(mainProcessConnection: Client, windowId: number) {
+  private readonly services: Record<string, any> = {};
+
+  constructor(mainProcessConnection: Client) {
     super();
     this.mainProcessConnection = mainProcessConnection;
 
     this.windowsManagerChannel = this.getChannel(WINDOWS_MANAGER_NAME);
 
-    this._windowId = windowId;
+    this._windowId = ipcRenderer.sendSync(IPC_EVENTS.GET_WINDOW_ID);
 
     this.registerListeners();
   }
@@ -173,37 +164,16 @@ export class WindowsService extends Disposable implements IWindowsService {
   }
 
   onMessage<T>(channel: string): Event<T> {
-    return Event.any(
-      Event.fromNodeEventEmitter(ipcRenderer, channel, (_, args) => args),
-      Event.map(
-        Event.filter(
-          this._onMainProcessBroadCast.event,
-          ({ channel: _channel }) => _channel === channel,
-        ),
-        ({ data }) => data,
-      ),
-    );
+    return Event.fromNodeEventEmitter(ipcRenderer, channel, (_, args) => args);
   }
 
   registerServices(service: { [key: string]: unknown }) {
-    const channelName = getIpcChannelName({
-      target: CONNECTION_TARGET.BROWSER_WINDOW,
-      targetId: `${this.windowId || ''}`,
-    });
-    if (!this.registered) {
-      this.registered = true;
-      const channel = createCustomChannelReceiver(service);
-      this.mainProcessConnection.registerChannel(channelName, channel);
-    } else {
-      const channel =
-        this.mainProcessConnection.getServerChannel<ICustomServerChannel>(
-          channelName,
-        );
-      if (!channel) {
-        renderLog.info('services have been registered, do not regist again!');
-      }
-      channel?.updateServices(service);
-    }
+    Object.assign(this.services, service);
+    const channel = createChannelReceiver(this.services);
+    this.mainProcessConnection.registerChannel(
+      CONNECTION_TARGET.BROWSER_WINDOW,
+      channel,
+    );
   }
 
   registerWillClose(callBack: () => any | Promise<any>): IDisposable {
@@ -247,8 +217,8 @@ export class WindowsService extends Disposable implements IWindowsService {
   }
 
   // broadcast msg to all windows
-  broadCast(channel: string, ...args: any[]): Promise<any> {
-    return this.callWindowsManager('broadCast', channel, ...args);
+  broadCast(channel: string, args: any): Promise<any> {
+    return this.callWindowsManager('broadCast', channel, args);
   }
 
   // send msg to window receiver

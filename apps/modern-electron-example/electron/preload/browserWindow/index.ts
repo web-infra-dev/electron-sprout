@@ -3,8 +3,8 @@ import { readFileSync } from 'fs';
 import {
   exposeInMainWorld,
   browserWindowPreloadApis,
+  winService,
 } from '@modern-js/runtime/electron-render';
-import { getCurrentWindow } from '@electron/remote';
 import { testServices } from '@modern-js/electron-test/render';
 import { IS_DEV } from '../../common/utils';
 
@@ -13,7 +13,6 @@ export const apis = testServices({
   ...rest,
   callMain,
   startToUpdate: (url: string) => callMain('startToUpdate', url),
-
   openWindow: (winName: string) => callMain('openWindow', winName),
   openDevTools: (webviewId: string) => {
     const webview = rest.webviewService.getWebviewById(webviewId);
@@ -27,7 +26,6 @@ export const apis = testServices({
   readFile: (path: string) => readFileSync(path),
   getAppVersion: () => '13.5.1',
   getPageLocation: () => {
-    console.log('getPageLocation');
     return window.location.href;
   },
   openInBrowser: (url: string) => callMain('openInBrowser', url),
@@ -40,7 +38,7 @@ export const apis = testServices({
       'webview',
       IS_DEV ? 'index.dev.js' : 'index.js',
     ),
-  getCurrentWindowId: () => getCurrentWindow().id,
+  getCurrentWindowId: () => winService.windowId,
   listenWillClose: (data: string) =>
     new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
@@ -48,7 +46,6 @@ export const apis = testServices({
       }, 5000);
       const listener = rest.winService.registerWillClose(() => {
         clearTimeout(timeout);
-        console.log('data:', data);
         resolve(data);
         listener.dispose();
       });

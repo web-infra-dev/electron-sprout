@@ -69,7 +69,24 @@ export function createChannelReceiver(
     }
 
     call(_: unknown, command: string, args?: any[]): Promise<any> {
-      const target = handler[command];
+      let obj: any = handler;
+      let execFunc: string = command;
+      const funcNameArray = command.split('.');
+      while (funcNameArray.length > 1) {
+        const name = funcNameArray.shift();
+        if (name) {
+          if (!obj[name]) {
+            throw Error(`command not found: ${command}`);
+          }
+          obj = obj[name];
+        }
+      }
+      const _command = funcNameArray.shift();
+      if (!_command) {
+        throw Error(`exec command failed: ${command}`);
+      }
+      execFunc = _command;
+      const target = obj[_command];
       if (typeof target === 'function') {
         // Revive unless marshalling disabled
         if (!disableMarshalling && Array.isArray(args)) {
@@ -88,7 +105,7 @@ export function createChannelReceiver(
         }
       }
 
-      throw new Error(`Method not found: ${command}`);
+      throw new Error(`Method not found: ${_command}`);
     }
   })();
 }

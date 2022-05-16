@@ -79,7 +79,7 @@ export class Server extends IPCServer {
         ),
       );
       const protocol = new Protocol(webContents, onMessage);
-      return { protocol, onDidClientDisconnect };
+      return { protocol, onDidClientDisconnect, ctx: id.toString() };
     });
   }
 

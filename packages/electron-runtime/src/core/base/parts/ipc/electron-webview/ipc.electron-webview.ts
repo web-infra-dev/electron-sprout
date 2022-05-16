@@ -1,4 +1,3 @@
-
 import { ipcRenderer } from 'electron';
 import { Event } from '../../../common/event';
 import { IPCClient } from '../common/ipc';
@@ -20,9 +19,9 @@ export class WebviewIpcClient extends IPCClient implements IDisposable {
     return new WebviewProtocol(ipcRenderer, onMessage);
   }
 
-  constructor(id: string) {
+  constructor() {
     const protocol = WebviewIpcClient.createProtocol();
-    super(protocol, id);
+    super(protocol);
     this.protocol = protocol;
   }
 

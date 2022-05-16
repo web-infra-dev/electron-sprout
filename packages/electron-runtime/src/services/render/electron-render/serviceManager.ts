@@ -14,10 +14,7 @@ import { UpdateService } from '@/services/update/electron-render/update';
 export default class ServiceManager {
   private readonly services: ServiceCollection;
 
-  constructor(
-    private readonly mainProcessConnection: Client,
-    private readonly windowId: number,
-  ) {
+  constructor(private readonly mainProcessConnection: Client) {
     this.services = new ServiceCollection();
   }
 
@@ -27,10 +24,7 @@ export default class ServiceManager {
       return this.services.get(IWindowsService) as IWindowsService;
     }
     const webviewService = this.getWebviewService();
-    const winService = new WindowsService(
-      this.mainProcessConnection,
-      this.windowId,
-    );
+    const winService = new WindowsService(this.mainProcessConnection);
     // unload this when browserWindow is unmounting.
     const onUnload = Event.once(
       Event.fromDOMEventEmitter(window, 'unload', e => e),

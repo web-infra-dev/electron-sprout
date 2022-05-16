@@ -29,13 +29,14 @@ export class Client extends IPCClient implements IDisposable {
     return protocol;
   }
 
-  constructor(id: string) {
+  constructor() {
     const protocol = Client.createProtocol();
-    super(protocol, id);
+    super(protocol);
     this.protocol = protocol;
   }
 
   dispose(): void {
+    super.dispose();
     this.protocol.dispose();
   }
 }
@@ -126,7 +127,7 @@ export class WebviewIpcServer extends IPCServer {
         ),
       );
       const protocol = new BrowserWindowProtocol(webview, onMessage);
-      return { protocol, onDidClientDisconnect };
+      return { protocol, onDidClientDisconnect, ctx: webviewId };
     });
   }
 

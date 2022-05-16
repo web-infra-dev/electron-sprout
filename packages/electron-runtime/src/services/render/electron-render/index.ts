@@ -1,24 +1,14 @@
-import { getGlobal, getCurrentWindow } from '@electron/remote';
-
+import { ipcRenderer } from 'electron';
 import { Bridge } from './bridge';
 import ServiceManager from './serviceManager';
 import { Client } from '@/core/base/parts/ipc/electron-browser/ipc.electron-browser';
-import { getConnectionId, CONNECTION_TARGET } from '@/common/utils/ipc';
+import { IPC_EVENTS } from '@/common/constants/events';
 
-const CURRENT_WIN_ID = getCurrentWindow().id;
-
-const mainProcessConnection: Client = new Client(
-  getConnectionId(CONNECTION_TARGET.BROWSER_WINDOW, `${CURRENT_WIN_ID}`),
-);
-
-const APP_ROOT = getGlobal('electronCoreObj').appRoot;
+const mainProcessConnection: Client = new Client();
 
 const bridge = new Bridge(mainProcessConnection);
 
-const serviceManager = new ServiceManager(
-  mainProcessConnection,
-  CURRENT_WIN_ID,
-);
+const serviceManager = new ServiceManager(mainProcessConnection);
 
 export const winService = serviceManager.getWindowsService();
 export const webviewService = serviceManager.getWebviewService();
@@ -30,5 +20,7 @@ export const lifecycleService = serviceManager.getLifecycleService();
 
 const callMain = (funcName: string, ...args: any[]) =>
   bridge.callMain(funcName, ...args);
+
+const APP_ROOT = ipcRenderer.sendSync(IPC_EVENTS.GET_APP_ROOT);
 
 export { APP_ROOT, bridge, callMain, serviceManager };

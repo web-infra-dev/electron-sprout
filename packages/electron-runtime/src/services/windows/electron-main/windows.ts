@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron';
+import { BrowserWindow, ipcMain } from 'electron';
 import { mainLog } from '@modern-js/electron-log';
 import { once } from '../../../core/base/common/functional';
 import { IInstantiationService } from '../../../core/instantiation/instantiation';
@@ -20,11 +20,7 @@ import { Emitter, Event as CommonEvent } from '../../../core/base/common/event';
 import { mergeObj } from '../../../common/utils/util';
 import { Connection } from '../../../core/base/parts/ipc/common/ipc';
 import { WindowObj } from './windowObj';
-import {
-  getConnectionId,
-  CONNECTION_TARGET,
-  getIpcChannelName,
-} from '@/common/utils/ipc';
+import { CONNECTION_TARGET } from '@/common/utils/ipc';
 
 export class WindowsMainService
   extends Disposable
@@ -76,6 +72,13 @@ export class WindowsMainService
         }
       },
     );
+    ipcMain.on(IPC_EVENTS.GET_WINDOW_ID, event => {
+      const bw = BrowserWindow.fromWebContents(event.sender);
+      if (!bw) {
+        throw new Error('window has been destroied');
+      }
+      event.returnValue = bw.id;
+    });
   }
 
   private setWindowsConfigByName(config: WindowConfig): WindowConfig {
@@ -164,37 +167,33 @@ export class WindowsMainService
     });
   }
 
-  private sendToByName(name: string, channel: string, ...args: any[]): void {
+  private sendToByName(name: string, channel: string, args: any): void {
     const windows = this.getWindowByName(name);
     if (windows.length === 0) {
       mainLog.warn(`window: ${name} doesn't exist!`);
       return;
     }
-    windows.forEach(window => window.sendWhenReady(channel, ...args));
+    windows.forEach(window => window.sendWhenReady(channel, args));
   }
 
-  private sendToById(id: number, channel: string, ...args: any[]) {
+  private sendToById(id: number, channel: string, args: any[]) {
     const window = this.getWindowById(id);
     if (!window) {
       mainLog.warn(`window: ${id} doesn't exist!`);
       return;
     }
-    window.sendWhenReady(channel, ...args);
-  }
-
-  private getConnectionNames(receiver: number | string): string[] {
-    if (typeof receiver === 'number') {
-      return [getConnectionId(CONNECTION_TARGET.BROWSER_WINDOW, `${receiver}`)];
-    }
-    const winIds = this.getWindowByName(receiver).map(x => x.id);
-    return winIds.map(id =>
-      getConnectionId(CONNECTION_TARGET.BROWSER_WINDOW, `${id}`),
-    );
+    window.sendWhenReady(channel, args);
   }
 
   private getConnections(receiver: number | string): Connection<string>[] {
+    const webContentsIds =
+      typeof receiver === 'string'
+        ? this.getWindowByName(receiver)
+            .map(x => x.win!.webContents.id)
+            .map(x => x.toString())
+        : [receiver.toString()];
     return this.electronIPCServer.connections.filter(x =>
-      this.getConnectionNames(receiver).includes(x.ctx),
+      webContentsIds.includes(x.ctx),
     );
   }
 
@@ -293,13 +292,13 @@ export class WindowsMainService
     return winConfig;
   }
 
-  sendTo(receiver: string | number, channel: string, ...args: any[]): void {
+  sendTo(receiver: string | number, channel: string, args: any[]): void {
     if (typeof receiver === 'number') {
       mainLog.info('send msg to win id:', receiver);
-      this.sendToById(receiver, channel, ...args);
+      this.sendToById(receiver, channel, args);
     } else {
       mainLog.info('send msg to win name:', receiver, '-', channel, '-');
-      this.sendToByName(receiver, channel, ...args);
+      this.sendToByName(receiver, channel, args);
     }
   }
 
@@ -311,12 +310,7 @@ export class WindowsMainService
     const connections = this.getConnections(receiver);
     const doCall = (connection: Connection<string>) =>
       connection.channelClient
-        .getChannel(
-          getIpcChannelName({
-            connectionId: connection.ctx,
-            target: CONNECTION_TARGET.BROWSER_WINDOW,
-          }),
-        )
+        .getChannel(CONNECTION_TARGET.BROWSER_WINDOW)
         .call(funcName, args)
         .catch(err => {
           const getErrMsg = () => {
@@ -333,9 +327,9 @@ export class WindowsMainService
     return Promise.all(connections.map(connection => doCall(connection)));
   }
 
-  broadCast(channel: string, ...args: any[]): void {
+  broadCast(channel: string, args: any): void {
     WindowsMainService.WINDOWS.forEach(each => {
-      this.sendTo(each.name, channel, ...args);
+      this.sendTo(each.name, channel, args);
     });
   }
 

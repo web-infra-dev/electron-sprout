@@ -65,7 +65,7 @@ export class WebviewService extends Disposable implements IWebviewService {
   // They will timeout after `timeoutDelay`.
   private readonly pendingRequests = new Map<string, PendingRequest[]>();
 
-  private services: any = null;
+  private services: any = {};
 
   constructor(private timeoutDelay: number = 1000) {
     super();
@@ -156,22 +156,17 @@ export class WebviewService extends Disposable implements IWebviewService {
   }
 
   registerServices(services: object) {
-    if (!this.isRegistered) {
-      this.isRegistered = true;
-      this.services = services;
-      this.webviewServers.forEach(each => {
-        if (
-          each.webviewServer &&
-          !each.webviewServer.getChannelByName(WEBVIEW_IPC_CHANNEL)
-        ) {
-          const userServices = this.services || {};
-          const channel = createChannelReceiver(userServices);
-          each.webviewServer.registerChannel(WEBVIEW_IPC_CHANNEL, channel);
-        }
-      });
-    } else {
-      renderLog.warn('services has registered, do not regist again！');
-    }
+    this.services = Object.assign(this.services, services);
+    this.webviewServers.forEach(each => {
+      if (
+        each.webviewServer &&
+        !each.webviewServer.getChannelByName(WEBVIEW_IPC_CHANNEL)
+      ) {
+        const userServices = this.services || {};
+        const channel = createChannelReceiver(userServices);
+        each.webviewServer.registerChannel(WEBVIEW_IPC_CHANNEL, channel);
+      }
+    });
   }
 
   removeWebviewIpcServer(webviewId: string): void {

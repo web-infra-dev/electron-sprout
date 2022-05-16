@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.3",
-    "@electron/remote": "^2",
     "@modern-js/electron-log": "workspace:^2.0.14",
     "axios": "^0.21.1",
     "debug": "^4.3.2",

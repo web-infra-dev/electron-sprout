@@ -1,5 +1,4 @@
 import { ipcRenderer } from 'electron';
-import { renderLog } from '@modern-js/electron-log';
 import {
   Disposable,
   Emitter,
@@ -7,18 +6,14 @@ import {
   IDisposable,
   WebviewIpcClient,
 } from '@/common';
-import {
-  IChannel,
-  ICustomServerChannel,
-} from '@/core/base/parts/ipc/common/ipc';
-import { createCustomChannelReceiver } from '@/services/utils';
+import { IChannel } from '@/core/base/parts/ipc/common/ipc';
+import { createChannelReceiver } from '@/core/base/parts/ipc/node/ipc';
 
 interface IpcEvent {
   channel: string;
   data?: any;
 }
 
-const id = `webview_${new Date().getTime()}`;
 const WEBVIEW_IPC_CHANNEL = 'webview_ipc_channel';
 const WEBVIEW_IPC_CHANNEL_NAME = 'webviewIpcManager';
 
@@ -41,6 +36,8 @@ class WebviewBridge extends Disposable {
   protected readonly _onConnected: Emitter<IpcEvent> = this._register(
     new Emitter<IpcEvent>(),
   );
+
+  private readonly services: Record<string, any> = {};
 
   public whenServicesRegisted() {
     if (this.registered) {
@@ -77,7 +74,7 @@ class WebviewBridge extends Disposable {
     );
 
     onParentWindowIpcCreated(() => {
-      this.browserwindowConnection = new WebviewIpcClient(id);
+      this.browserwindowConnection = new WebviewIpcClient();
       this.browserWindowChannel =
         this.getBrowserWindowChannel(WEBVIEW_IPC_CHANNEL);
       // here doesn't need a channel name
@@ -105,29 +102,16 @@ class WebviewBridge extends Disposable {
 
   async registerServices(services: { [key: string]: unknown }) {
     await this.whenConnected();
-    if (!this.registered && this.browserwindowConnection) {
-      this.registered = true;
-
-      const channel = createCustomChannelReceiver(services);
-      this.browserwindowConnection.registerChannel(
-        WEBVIEW_IPC_CHANNEL_NAME,
-        channel,
-      );
-      this._onServicesRegisted.fire({
-        channel: '',
-      });
-    } else if (this.browserwindowConnection) {
-      // update services
-      const channel =
-        this.browserwindowConnection.getServerChannel<ICustomServerChannel>(
-          WEBVIEW_IPC_CHANNEL_NAME,
-        );
-      channel?.updateServices(services);
-    } else {
-      renderLog.warn(
-        'You can call registerServices only for one time in the same renderer process, do not call this again (webviewBridge.registerServices)',
-      );
-    }
+    Object.assign(this.services, services);
+    const channel = createChannelReceiver(this.services);
+    this.browserwindowConnection!.registerChannel(
+      WEBVIEW_IPC_CHANNEL_NAME,
+      channel,
+    );
+    this.registered = true;
+    this._onServicesRegisted.fire({
+      channel: '',
+    });
   }
 
   onMessage<T>(channel: string): Event<T> {
