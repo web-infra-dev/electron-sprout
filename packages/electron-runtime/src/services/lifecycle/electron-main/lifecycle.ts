@@ -210,8 +210,10 @@ export class LifecycleService
         app.removeListener('before-quit', beforeQuitListener);
         app.removeListener('window-all-closed', windowAllClosedListener);
 
-        // there are some problem, so you need to use setTimeout!
-        setTimeout(() => app.quit(), 0);
+        // there are some problem, so you need to set defaultPrevented to false!
+        // see https://github.com/electron/electron/issues/33643
+        (e.defaultPrevented as any) = false;
+        app.quit();
       });
     });
   }
