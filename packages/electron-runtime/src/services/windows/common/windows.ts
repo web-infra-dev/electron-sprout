@@ -21,7 +21,7 @@ export interface IWindowsMainService {
     funcName: string,
     ...args: any[]
   ) => Promise<any>;
-  broadCast(channel: string, ...args: any[]): void;
+  broadCast(channel: string, args: any): void;
   getWindowById: (windowId: number) => IWindow | undefined;
   getWindows: () => IWindow[];
   sendTo: (receiver: string | number, channel: string, ...args: any[]) => void; // 可以通过名字或者窗口id 发送消息

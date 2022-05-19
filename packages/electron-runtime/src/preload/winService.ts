@@ -43,8 +43,8 @@ export const winService = {
   ): Promise<any> {
     return service.closeWindowByName(name, options);
   },
-  broadCast(channel: string, ...args: any[]): Promise<any> {
-    return service.broadCast(channel, ...args);
+  broadCast(channel: string, args: any): Promise<any> {
+    return service.broadCast(channel, args);
   },
   sendTo(
     receiver: string | number,

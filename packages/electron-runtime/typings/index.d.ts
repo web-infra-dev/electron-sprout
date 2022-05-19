@@ -28,11 +28,3 @@ export * from './yazl';
 export * from './https-proxy-agent';
 export { default } from '../src/main';
 export * from '../src/common';
-
-declare global {
-  namespace NodeJS {
-    interface Global {
-      electronCoreObj: any;
-    }
-  }
-}

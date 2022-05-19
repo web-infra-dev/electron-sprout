@@ -1,6 +1,8 @@
 const IPC_EVENTS = {
   ON_BEFORE_UNLOAD: 'app:onBeforeUnload',
   ON_WILL_UNLOAD: 'app:onWillUnload',
+  GET_WINDOW_ID: 'app:getWindowId',
+  GET_APP_ROOT: 'app:getAppRoot',
   ELECTRON_RENDER_READY: 'app:electronRenderReady',
   WEB_VIEW_READY: 'app:webviewReady',
   ON_CLOSE_WINDOW_OK: (oneTimeEventToken: number) =>

@@ -35,7 +35,7 @@ export interface IWindowsService {
     },
   ): Promise<boolean>;
   disposeWebviewConnection(webviewIds: number[]): Promise<void>;
-  broadCast(channel: string, ...args: any[]): Promise<any>;
+  broadCast(channel: string, args: any): Promise<any>;
   openExplorerWindow(hide?: boolean, userId?: string): Promise<any>;
   dispose(): void;
   sendTo(

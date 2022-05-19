@@ -10,6 +10,7 @@ import {
   combinedDisposable,
 } from '../../../common/lifecycle';
 import {
+  Barrier,
   CancelablePromise,
   createCancelablePromise,
   timeout,
@@ -49,10 +50,6 @@ export interface IServerChannel<TContext = string> {
     cancellationToken?: CancellationToken,
   ) => Promise<T>;
   listen: <T>(ctx: TContext, event: string, arg?: any) => Event<T>;
-}
-
-export interface ICustomServerChannel extends IServerChannel {
-  updateServices(services: { [key: string]: unknown }): void;
 }
 
 export enum RequestType {
@@ -141,9 +138,6 @@ export interface IChannelServer<TContext = string> {
     channelName: string,
     channel: IServerChannel<TContext>,
   ) => void;
-  getServerChannel: <T extends IServerChannel<TContext>>(
-    channelName: string,
-  ) => T | undefined;
 }
 
 /**
@@ -353,10 +347,6 @@ export class ChannelServer<TContext = string>
       this.onRawMessage(msg);
     });
     this.sendResponse({ type: ResponseType.Initialize });
-  }
-
-  getServerChannel<T extends IServerChannel<TContext>>(channelName: string) {
-    return this.channels.get(channelName) as T | undefined;
   }
 
   registerChannel(
@@ -823,9 +813,10 @@ export class ChannelClient implements IChannelClient, IDisposable {
   }
 }
 
-export interface ClientConnectionEvent {
+export interface ClientConnectionEvent<TContext = string> {
   protocol: IMessagePassingProtocol;
   onDidClientDisconnect: Event<void>;
+  ctx: TContext;
 }
 
 export interface Connection<TContext> extends Client<TContext> {
@@ -865,37 +856,32 @@ export class IPCServer<TContext = string>
     return result;
   }
 
-  constructor(onDidClientConnect: Event<ClientConnectionEvent>) {
-    onDidClientConnect(({ protocol, onDidClientDisconnect }) => {
-      const onFirstMessage = Event.once(protocol.onMessage);
-      onFirstMessage(msg => {
-        const reader = new BufferReader(msg);
-        const ctx = deserialize(reader) as TContext;
-        const channelServer = new ChannelServer(protocol, ctx);
-        const channelClient = new ChannelClient(protocol);
-        this.channels.forEach((channel, name) =>
-          channelServer.registerChannel(name, channel),
-        );
+  constructor(onDidClientConnect: Event<ClientConnectionEvent<TContext>>) {
+    onDidClientConnect(({ protocol, onDidClientDisconnect, ctx }) => {
+      // send ctx to client first
+      const writer = new BufferWriter();
+      serialize(writer, ctx);
+      protocol.send(writer.buffer);
 
-        const connection: Connection<TContext> = {
-          channelServer,
-          channelClient,
-          ctx,
-        };
-        this._connections.add(connection);
-        this._onDidChangeConnections.fire(connection);
+      const channelServer = new ChannelServer(protocol, ctx);
+      const channelClient = new ChannelClient(protocol);
+      this.channels.forEach((channel, name) =>
+        channelServer.registerChannel(name, channel),
+      );
+      const connection: Connection<TContext> = {
+        channelServer,
+        channelClient,
+        ctx,
+      };
+      this._connections.add(connection);
+      this._onDidChangeConnections.fire(connection);
 
-        onDidClientDisconnect(() => {
-          channelServer.dispose();
-          channelClient.dispose();
-          this._connections.delete(connection);
-        });
+      onDidClientDisconnect(() => {
+        channelServer.dispose();
+        channelClient.dispose();
+        this._connections.delete(connection);
       });
     });
-  }
-
-  getServerChannel<T extends IServerChannel<TContext>>(channelName: string) {
-    return this.channels.get(channelName) as T | undefined;
   }
 
   getChannel<T extends IChannel>(
@@ -968,18 +954,23 @@ export class IPCClient<TContext = string>
 {
   private readonly channelClient: ChannelClient;
 
-  private readonly channelServer: ChannelServer<TContext>;
+  private channelServer?: ChannelServer<TContext>;
 
-  constructor(protocol: IMessagePassingProtocol, ctx: TContext) {
-    const writer = new BufferWriter();
-    serialize(writer, ctx);
-    protocol.send(writer.buffer);
+  private readyBarrier: Barrier = new Barrier();
+
+  private isDisposed: boolean = false;
+
+  constructor(protocol: IMessagePassingProtocol) {
+    const onFirstMessage = Event.once(protocol.onMessage);
+    onFirstMessage(msg => {
+      if (!this.isDisposed) {
+        const reader = new BufferReader(msg);
+        const ctx = deserialize(reader) as TContext;
+        this.channelServer = new ChannelServer(protocol, ctx);
+        this.readyBarrier.open();
+      }
+    });
     this.channelClient = new ChannelClient(protocol);
-    this.channelServer = new ChannelServer(protocol, ctx);
-  }
-
-  getServerChannel<T extends IServerChannel<TContext>>(channelName: string) {
-    return this.channelServer.getServerChannel<T>(channelName);
   }
 
   getChannel<T extends IChannel>(channelName: string): T {
@@ -990,12 +981,19 @@ export class IPCClient<TContext = string>
     channelName: string,
     channel: IServerChannel<TContext>,
   ): void {
-    this.channelServer.registerChannel(channelName, channel);
+    this.whenReady().then(() =>
+      this.channelServer!.registerChannel(channelName, channel),
+    );
   }
 
   dispose(): void {
     this.channelClient.dispose();
-    this.channelServer.dispose();
+    this.channelServer?.dispose();
+    this.isDisposed = true;
+  }
+
+  async whenReady() {
+    await this.readyBarrier.wait();
   }
 }
 
