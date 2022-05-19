@@ -1,5 +1,6 @@
 import { join, dirname } from 'path';
 import spawn from 'cross-spawn';
+import { minimist } from '@modern-js/utils';
 import { devMainProcess } from '@modern-js/electron-tools';
 import { BUILD_MODE, ENVS, ENV_NAME, PROCESS_TYPE } from './constant';
 import { processManager } from './process-manager';
@@ -27,8 +28,8 @@ export const registerDevMainCmd = (program: any) => {
         '-e, --entry <entry>',
         'specify the entry path of main process such as: xx/xx.ts(js)',
       )
-      .action((options: { entry?: string }) => {
-        const { entry } = options;
+      .action(() => {
+        const { entry } = minimist(process.argv);
         processManager.setProcess(PROCESS_TYPE.MAIN, {
           process: execDevMain(entry),
           args: entry ? [entry] : [],
@@ -114,14 +115,15 @@ export const registerDevElectronCmd = (program: any) => {
         '-e, --entry <entry>',
         'specify the entry path of main process such as: xx/xx.ts(js)',
       )
-      .action((options: { enableNode?: boolean; entry?: string }) => {
-        if (options.enableNode) {
+      .action(() => {
+        const { entry, enableNode } = minimist(process.argv);
+        if (enableNode) {
           process.env[ENVS.BUILD_MODE] = BUILD_MODE.ELECTRON_WEB;
         }
         process.env[ENVS.IS_ELECTRON_COMMAND] = 'true';
 
-        if (options.entry) {
-          process.env[ENVS.MAIN_PROCESS_ENTRY_FILE] = options.entry;
+        if (entry) {
+          process.env[ENVS.MAIN_PROCESS_ENTRY_FILE] = entry;
         }
         // TODO: @pikun won't support to restart, it will have some problem
         // registerRestartListener();
