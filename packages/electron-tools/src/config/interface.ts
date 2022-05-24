@@ -1,16 +1,8 @@
 import { TransformOptions } from '@babel/core';
 import { Configuration } from 'electron-builder';
 
-export type BuildConfig = {
-  baseConfig: Configuration;
-  macConfig?: Configuration;
-  winConfig?: Configuration;
-  win64Config?: Configuration;
-  linuxConfig?: Configuration;
-};
-
 export type UserConfig = {
-  builder?: BuildConfig;
+  builder?: Configuration;
   babel?:
     | TransformOptions
     | ((defaultBabelConfig: TransformOptions) => TransformOptions);

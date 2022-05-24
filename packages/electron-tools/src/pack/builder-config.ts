@@ -31,31 +31,14 @@ const customizer = (objValue: any, srcValue: any) => {
 // combine userConfig and defaultConfig
 // platform: [win32, win64, mac]
 const config = (options: { cwd: string; platform: string }) => {
-  const { cwd, platform } = options;
+  const { cwd } = options;
   const userConfig = readConfig(cwd);
-  const mergedConfig = mergeWith(
+  const builderConfig = mergeWith(
     baseConfig,
     userConfig.builder || {},
     customizer,
   );
 
-  const getConfigByPlatform = () => {
-    switch (platform) {
-      case 'win32':
-        return mergedConfig.winConfig;
-      case 'win64':
-        return mergedConfig.win64Config;
-      case 'mac':
-        return mergedConfig.macConfig;
-      default:
-        return mergedConfig.linuxConfig || {};
-    }
-  };
-
-  const builderConfig = {
-    ...mergedConfig.baseConfig,
-    ...getConfigByPlatform(),
-  };
   cliLog.info(
     'final config:',
     JSON.stringify(builderConfig, (key, val) => val, 2),

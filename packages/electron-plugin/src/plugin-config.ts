@@ -11,24 +11,6 @@ export const pluginConfig = {
     },
     builder: {
       type: 'object',
-      required: ['baseConfig'],
-      properties: {
-        baseConfig: {
-          type: 'object',
-        },
-        macConfig: {
-          type: 'object',
-        },
-        winConfig: {
-          type: 'object',
-        },
-        win64Config: {
-          type: 'object',
-        },
-        linuxConfig: {
-          type: 'object',
-        },
-      },
     },
   },
 };
