@@ -1,5 +1,13 @@
 # modern-electron-example
 
+## 0.0.0-vite-20220525093005
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - @modern-js/plugin-electron@0.0.0-vite-20220525093005
+  - @modern-js/electron-tools@0.0.0-vite-20220525093005
+
 ## 1.0.13
 
 ### Patch Changes

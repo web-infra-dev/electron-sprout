@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
 import {
-  createServer as ViteCreateServer,
+  createServer as viteCreateServer,
   build as viteBuild,
   createLogger,
 } from 'vite';
@@ -38,7 +38,7 @@ export async function createServer(
     if (rendererViteConfig) {
       logger.info(colors.gray(`\n-----\n`));
 
-      const server = await ViteCreateServer(rendererViteConfig);
+      const server = await viteCreateServer(rendererViteConfig);
 
       if (!server.httpServer) {
         throw new Error('HTTP server not available');

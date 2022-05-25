@@ -15,7 +15,7 @@ const defaultLoadUrl = (options: {
 
   const _devBaseUrl = devBaseUrl
     ? devBaseUrl(winName)
-    : `http://localhost:8080/${name}`;
+    : `http://localhost:3000/${name}`;
 
   const _prodBaseUrl = prodBaseUrl
     ? prodBaseUrl(winName)

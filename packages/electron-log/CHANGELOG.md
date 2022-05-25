@@ -1,5 +1,11 @@
 # @modern-js/electron-log
 
+## 0.0.0-vite-20220525093005
+
+### Patch Changes
+
+- publish for vite
+
 ## 2.0.14
 
 ### Patch Changes

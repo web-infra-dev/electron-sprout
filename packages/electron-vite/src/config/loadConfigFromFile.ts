@@ -76,9 +76,9 @@ const analysisConfig = (options: {
   const { configEnv, config, ignoreConfigWarning, logLevel } = options;
   const configRequired: string[] = [];
   const result: UserConfig = {
-    main: {},
-    renderer: {},
-    preload: {},
+    main: undefined,
+    renderer: undefined,
+    preload: undefined,
   };
   const configKeys = Object.keys(result);
   return promiseReduce(
