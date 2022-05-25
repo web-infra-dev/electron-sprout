@@ -1,0 +1,17 @@
+*.ts
+node_modules
+core/dist
+core/src/node_modules
+!*.d.ts
+typings/*.d.ts
+
+
+
+dist/api-docs/
+dist/js/**/*/*.d.ts
+dist/js/styles/common/**/*
+dist/js/styles/core/**/*
+
+src/
+tsconfig.json
+

@@ -3,6 +3,7 @@
   // eslint-plugin-import 的规则现在有 bug，可以临时加上：
   "rules": {
     "import/extensions": ["off"],
+    "import/order": "off",
     "@typescript-eslint/no-var-requires": "off",
     "import/no-commonjs": "off",
     "import/named": "off",
@@ -26,6 +27,8 @@
     "@typescript-eslint/no-require-imports": "off",
     "no-new-func": "off",
     "@typescript-eslint/no-implied-eval": "off",
-    "@typescript-eslint/dot-notation": "off"
+    "@typescript-eslint/dot-notation": "off",
+    "dot-notation": "off",
+    "prettier/prettier": "off"
   }
 }

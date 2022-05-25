@@ -2,6 +2,8 @@
   "extends": "@modern-js/tsconfig/base",
   "compilerOptions": {
     "declaration": false,
+    "module": "esnext",
+    "lib": ["esnext"],
     "jsx": "preserve",
     "baseUrl": "./",
     "skipDefaultLibCheck": true,

@@ -1,12 +1,7 @@
-import { mainLog } from '@modern-js/electron-log';
 import _ from 'lodash';
 import { app, Menu } from 'electron';
 import { Application } from './application';
-import { IS_DEV } from './common/constants/constants';
 import { handleWindowConfig } from './common/user-config';
-import { configureCommandlineSwitche } from './common/utils/configureCommandlineSwitch';
-import { fixDotNetVersionBug } from './common/utils/fixDotNetVersionBug';
-import { fixEnvsInMainProcess } from './common/utils/fixEnvsInMainProcess';
 import { MENU_TEMPLATE } from './common/utils/menuTemplate';
 import { SyncDescriptor } from './core/instantiation/descriptors';
 import { InstantiationService } from './core/instantiation/instantiationService';
@@ -16,58 +11,14 @@ import { ILifecycleMainService } from './services/lifecycle/common/lifecycle';
 import { LifecycleService } from './services/lifecycle/electron-main/lifecycle';
 
 class ElectronRuntime {
-  private syncShellEnv: boolean = true; // 默认为 true
-
-  private fixDotNetVersion: boolean = true;
-
-  constructor(private readonly options: IStartOption) {
-    this.syncShellEnv = _.has(options, 'syncShellEnv')
-      ? (options.syncShellEnv as boolean)
-      : true;
-    this.fixDotNetVersion = _.has(options, 'fixDotNetVersion')
-      ? (options.fixDotNetVersion as boolean)
-      : true;
-    this.initEnvs();
-  }
-
-  /**
-   * do somework before app ready
-   * such as fix .net version bug.
-   */
-  private initEnvs() {
-    if (this.fixDotNetVersion) {
-      fixDotNetVersionBug();
-    }
-    this.initEnvironment();
-  }
+  constructor(private readonly options: IStartOption) {}
 
   init(): Promise<void> {
     if (!app.isReady()) {
       throw Error('should use initServices after app ready!');
     }
     this.setDefaultMenu();
-    this.installExtensions();
     return this.createIOCInstance();
-  }
-
-  private initEnvironment() {
-    configureCommandlineSwitche();
-    if (this.syncShellEnv) {
-      fixEnvsInMainProcess();
-    }
-  }
-
-  private installExtensions() {
-    if (IS_DEV) {
-      // 安装 react devtools
-      const extenions = require('electron-devtools-installer').default;
-      const { REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
-      extenions(REACT_DEVELOPER_TOOLS)
-        .then((name: any) => mainLog.info(`add plugin：${name}`))
-        .catch((err: Error) =>
-          mainLog.error(`add plugin ${err.message} error:`, err),
-        );
-    }
   }
 
   private createIOCInstance() {

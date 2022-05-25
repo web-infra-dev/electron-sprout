@@ -22,7 +22,7 @@ const filterPkgInfo = (pkg: any) => {
 
 const getDistPackageJsonPath = (userProjectPath: string) => {
   const config = readConfig(userProjectPath);
-  const appPath = config?.builder?.baseConfig?.directories?.app || '';
+  const appPath = config?.builder?.directories?.app || '';
 
   return appPath
     ? join(userProjectPath, appPath, 'package.json')

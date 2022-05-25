@@ -11,6 +11,4 @@ export interface IStartOption {
   windowsConfig: WindowConfig[];
   windowsBaseConfig?: IWindowsBaseConfig;
   menuTemplate?: (Electron.MenuItemConstructorOptions | Electron.MenuItem)[];
-  syncShellEnv?: boolean; // default is true
-  fixDotNetVersion?: boolean; // default is true
 }

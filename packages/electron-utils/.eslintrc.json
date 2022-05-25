@@ -1,0 +1,7 @@
+{
+  "extends": ["@modern-js-app"],
+  // eslint-plugin-import 的规则现在有 bug，可以临时加上：
+  "rules": {
+    "@typescript-eslint/prefer-optional-chain": "off"
+  }
+}
