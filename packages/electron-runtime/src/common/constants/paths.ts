@@ -21,12 +21,7 @@ const defaultLoadUrl = (options: {
     ? prodBaseUrl(winName)
     : `file://${APP_ROOT}/${IS_DEV ? 'dist' : ''}/html/${winName}/index.html`;
 
-  const useFileProtocolInDev = _devBaseUrl.startsWith('file:');
-
-  // in prod, use file protocol as default.
-  // in dev, if start with file protocol, use file protocol as default.
-  // in dev, if start with http(s), then use file protocol as default.
-  return IS_DEV && !useFileProtocolInDev ? _devBaseUrl : _prodBaseUrl;
+  return IS_DEV ? _devBaseUrl : _prodBaseUrl;
 };
 
 export { APP_ROOT, defaultLoadUrl };
