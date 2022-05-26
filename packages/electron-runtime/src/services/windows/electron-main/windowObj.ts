@@ -135,10 +135,7 @@ export class WindowObj extends Disposable implements IWindow {
     const { windowConfig } = config;
     const { loadUrl = '' } = windowConfig;
 
-    if (
-      (IS_DEV && loadUrl.startsWith('file:')) ||
-      (!IS_DEV && !loadUrl.startsWith('http'))
-    ) {
+    if (!loadUrl.startsWith('file:') && !loadUrl.startsWith('http')) {
       /**
        * if useFileProtocolInDev
        * or in production and loadUrl not startWith http
