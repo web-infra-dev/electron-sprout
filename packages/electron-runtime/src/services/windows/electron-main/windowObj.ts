@@ -131,24 +131,6 @@ export class WindowObj extends Disposable implements IWindow {
     }
   }
 
-  private getUrl(config: IWindowCreationOptions): string {
-    const { windowConfig } = config;
-    const { loadUrl = '' } = windowConfig;
-
-    if (
-      (IS_DEV && loadUrl.startsWith('file:')) ||
-      (!IS_DEV && !loadUrl.startsWith('http'))
-    ) {
-      /**
-       * if useFileProtocolInDev
-       * or in production and loadUrl not startWith http
-       * then we will use file protocol
-       */
-      return `file://${join(APP_ROOT, loadUrl)}`;
-    }
-    return loadUrl;
-  }
-
   private createBrowserWindow(): void {
     const { disableAutoLoad, loadUrl, options, name } =
       this.config.windowConfig;
@@ -157,7 +139,7 @@ export class WindowObj extends Disposable implements IWindow {
     );
 
     if (loadUrl && !disableAutoLoad) {
-      this._win?.loadURL(this.getUrl(this.config));
+      this._win?.loadURL(this.config.windowConfig.loadUrl!);
     } else {
       mainLog.warn('you can load page by loadURL() !');
     }
