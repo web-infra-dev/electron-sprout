@@ -19,7 +19,7 @@ const defaultLoadUrl = (options: {
 
   const _prodBaseUrl = prodBaseUrl
     ? prodBaseUrl(winName)
-    : `${IS_DEV ? 'dist' : ''}/html/${winName}/index.html`;
+    : `file://${APP_ROOT}/${IS_DEV ? 'dist' : ''}/html/${winName}/index.html`;
 
   const useFileProtocolInDev = _devBaseUrl.startsWith('file:');
 
