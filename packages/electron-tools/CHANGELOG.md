@@ -1,5 +1,11 @@
 # @modern-js/electron-tools
 
+## 2.0.15
+
+### Patch Changes
+
+- fix: build could use modern.config.ts
+
 ## 2.0.14
 
 ### Patch Changes
