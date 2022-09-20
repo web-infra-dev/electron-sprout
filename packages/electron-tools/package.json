@@ -65,7 +65,9 @@
     "lodash": "^4.17.21",
     "os": "^0.1.2",
     "uglify-js": "^3.14.1",
-    "upath": "^2.0.1"
+    "upath": "^2.0.1",
+    "cosmiconfig-typescript-loader": "4.0.0",
+    "ts-node": "10.9.1"
   },
   "peerDependencies": {
     "@babel/register": ">=7.15.3",
@@ -88,9 +90,7 @@
     "@types/uglify-js": "^3.13.1",
     "electron-builder": "22.7.0",
     "typescript": "^4",
-    "webpack": "^5",
-    "cosmiconfig-typescript-loader": "4.0.0",
-    "ts-node": "10.9.1"
+    "webpack": "^5"
   },
   "jupiterSettings": {
     "output": {
