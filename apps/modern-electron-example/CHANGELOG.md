@@ -1,5 +1,13 @@
 # modern-electron-example
 
+## 1.0.15
+
+### Patch Changes
+
+- Updated dependencies [8eb0936]
+- Updated dependencies [undefined]
+  - @modern-js/electron-tools@2.0.17
+
 ## 1.0.14
 
 ### Patch Changes
