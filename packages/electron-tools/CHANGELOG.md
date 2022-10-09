@@ -1,5 +1,12 @@
 # @modern-js/electron-tools
 
+## 2.0.17
+
+### Patch Changes
+
+- 8eb0936: fix: electron-tools move deps
+- revert: read ts config
+
 ## 2.0.15
 
 ### Patch Changes
