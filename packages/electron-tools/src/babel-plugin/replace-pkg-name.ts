@@ -5,6 +5,7 @@
  */
 
 import { types, NodePath } from '@babel/core';
+import { ENVS } from '../utils/constant';
 
 export type ImportStyleType = 'source-code' | 'compiled-code';
 export interface IImportPathOpts {
@@ -12,8 +13,14 @@ export interface IImportPathOpts {
   importStyle?: ImportStyleType;
 }
 
-const MODERN_JS_NAME = '@modern-js/runtime';
-const ELECTRON_PLUGIN_NAME = '@modern-js/plugin-electron';
+// Allow to modify package names via env variables
+const MODERN_JS_NAME =
+  process.env[ENVS.ELECTRON_RUNTIME_PKG_NAME] || '@modern-js/runtime';
+const ELECTRON_PLUGIN_NAME =
+  process.env[ENVS.ELECTRON_PLUGIN_PKG_NAME] || '@modern-js/plugin-electron';
+
+console.log('MODERN_JS_NAME', MODERN_JS_NAME);
+console.log('ELECTRON_PLUGIN_NAME', ELECTRON_PLUGIN_NAME);
 
 // preload may have bridge or webview or render
 const INNER_PKGS_MAP = {
