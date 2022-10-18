@@ -19,9 +19,6 @@ const MODERN_JS_NAME =
 const ELECTRON_PLUGIN_NAME =
   process.env[ENVS.ELECTRON_PLUGIN_PKG_NAME] || '@modern-js/plugin-electron';
 
-console.log('MODERN_JS_NAME', MODERN_JS_NAME);
-console.log('ELECTRON_PLUGIN_NAME', ELECTRON_PLUGIN_NAME);
-
 // preload may have bridge or webview or render
 const INNER_PKGS_MAP = {
   ELECTRON_TEST: `${MODERN_JS_NAME}/electron-test`,
