@@ -1,5 +1,14 @@
 # @modern-js/electron-tools
 
+## 2.0.17
+
+### Patch Changes
+
+- 8eb0936: fix: electron-tools move deps
+- 5695edc: fix: allow to change main process runtime and plugin package name
+
+  fix: 允许修改主进程 runtime 和 plugin 包名
+
 ## 2.0.15
 
 ### Patch Changes
