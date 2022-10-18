@@ -1,5 +1,13 @@
 # @modern-js/electron-tools
 
+## 2.0.18
+
+### Patch Changes
+
+- 7f032d2: fix: remove unnecessary console.log calls
+
+  fix: 移除多余的 console.log
+
 ## 2.0.17
 
 ### Patch Changes
